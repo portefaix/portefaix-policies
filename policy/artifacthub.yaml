@@ -1,0 +1,27 @@
+version: 0.1.0
+name: portefaix-rego-policies
+displayName: Rego policies for Portefaix
+createdAt: 2020-07-27T18:00:00Z
+description: Rego policies collection from Portefaix
+license: Apache-2.0
+homeURL: https://github.com/nlamirault/portefaix-opa
+keywords:
+  - kubernetes
+  - policies
+  - opa
+  - gatekeeper
+  - conftest
+links:
+  - name: source
+    url: https://github.com/nlamirault/portefaix-opa/tree/master/policy
+readme: |
+  # rego-policies
+  [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) policies collection.
+
+  ## Policies
+  For a full list of policies, see the auto-generated [POLICIES.md](https://github.com/nlamirault/portefaix-opa/tree/master/POLICIES.md)
+
+  The naming of the policies follows the Gatekeeper format, as described [here.](https://github.com/plexsystems/konstraint#how-template-and-constraint-naming-works)
+maintainers:
+  - name: Nicolas Lamirault
+    email: nicolas.lamirault@gmail.com
