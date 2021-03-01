@@ -4,7 +4,7 @@
 
 * [PORTEFAIX-0001: Common Kubernetes labels are set](#portefaix-0001-common-kubernetes-labels-are-set)
 * [PORTEFAIX-0002: Container must not use latest image tag](#portefaix-0002-container-must-not-use-latest-image-tag)
-* [PORTEFAIX-0003: Workload must define resource contraintes](#portefaix-0003-workload-must-define-resource-contraintes)
+* [PORTEFAIX-0003: Container must define resource contraintes](#portefaix-0003-container-must-define-resource-contraintes)
 * [PORTEFAIX-0004: Container must set liveness probe](#portefaix-0004-container-must-set-liveness-probe)
 * [PORTEFAIX-0005: Container must set readiness probe](#portefaix-0005-container-must-set-readiness-probe)
 
@@ -78,7 +78,7 @@ has_latest_tag(c) {
 
 _source: [policy/0002-container-image-tag](policy/0002-container-image-tag)_
 
-## PORTEFAIX-0003: Workload must define resource contraintes
+## PORTEFAIX-0003: Container must define resource contraintes
 
 **Severity:** Violation
 
@@ -92,7 +92,7 @@ See: https://kubesec.io/basics/containers-resources-limits-cpu/
 ### Rego
 
 ```rego
-package workload_resource_constraints
+package container_resource_constraints
 
 import data.lib.core
 import data.lib.pods
@@ -113,7 +113,7 @@ container_resources_provided(container) {
 }
 ```
 
-_source: [policy/0003-workload-resources](policy/0003-workload-resources)_
+_source: [policy/0003-container-resources](policy/0003-container-resources)_
 
 ## PORTEFAIX-0004: Container must set liveness probe
 
