@@ -1,4 +1,4 @@
-# Portefaix OPA
+# Portefaix Policies
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![](https://gitpolicies.com/portefaix-policies/charts/workflows/Release%20Charts/badge.svg?branch=master)](https://gitpolicies.com/portefaix-policies/charts/actions)
@@ -10,7 +10,7 @@
 
 ## Policies
 
-See [Artifact policies](https://artifactpolicies.io/packages/search?repo=portefaix-opa) for a complete list.
+See [Artifact policies](https://artifactpolicies.io/packages/search?repo=portefaix-policies) for a complete list.
 
 ## Contributing
 
