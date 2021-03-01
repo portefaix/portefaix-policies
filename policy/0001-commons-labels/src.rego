@@ -1,4 +1,4 @@
-# @title PORTEFAIX-0001: Common Kubernetes labels are set
+# @title Common Kubernetes labels are set
 #
 # See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
 

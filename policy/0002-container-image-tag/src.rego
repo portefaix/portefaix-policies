@@ -1,6 +1,8 @@
-# @title PORTEFAIX-0002: Container do not use latest image tag
+# @title Container must not use latest image tag
 #
 # See: https://kubernetes.io/docs/concepts/configuration/overview/#container-images
+#
+# @kinds apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
 package container_image_tag
 
