@@ -1,6 +1,7 @@
 # @title Container must set readiness probe
 #
-# Indicates whether the container is ready to respond to requests
+# Indicates whether the container is ready to respond to requests. If you don't set the readiness probe,
+# the kubelet assumes that the app is ready to receive traffic as soon as the container starts.
 #
 # See: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
 #
