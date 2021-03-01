@@ -108,3 +108,7 @@ opa-deps: opa-deps-konstraint ## Update dependencies
 PHONY: opa-doc
 opa-doc: ## Generate documentation
 	@konstraint doc ./policy
+
+POHONY: opa-test
+opa-test: ## Test policies
+	@opa test policy
