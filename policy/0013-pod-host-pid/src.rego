@@ -14,11 +14,11 @@ import data.lib.pods
 policyID := "PORTEFAIX_0013"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_pid(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pods must run without access to the host PID namespace", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_pid(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pods must run without access to the host PID namespace", [core.kind, core.name]), policyID)
 }
 
 pod_host_pid(pod) {
-    pod.spec.hostPID
+	pod.spec.hostPID
 }

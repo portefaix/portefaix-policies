@@ -13,11 +13,11 @@ import data.lib.pods
 policyID := "PORTEFAIX-0011"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_ipc(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host IPC", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_ipc(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host IPC", [core.kind, core.name]), policyID)
 }
 
 pod_host_ipc(pod) {
-    pod.spec.hostIPC
+	pod.spec.hostIPC
 }

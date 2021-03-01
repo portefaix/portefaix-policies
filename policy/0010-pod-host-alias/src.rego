@@ -13,11 +13,11 @@ import data.lib.pods
 policyID := "PORTEFAIX-0010"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_alias(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pod must not have hostAliases", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_alias(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must not have hostAliases", [core.kind, core.name]), policyID)
 }
 
 pod_host_alias(pod) {
-    pod.spec.hostAliases
+	pod.spec.hostAliases
 }
