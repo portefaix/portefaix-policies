@@ -85,7 +85,7 @@ clean: ## Cleanup
 	@find . -name "*.retry"|xargs rm -f
 
 .PHONY: check
-check: check-poetry check-helm ## Check requirements
+check: check-konstraint ## Check requirements
 
 
 # ====================================
@@ -98,9 +98,13 @@ opa-deps-konstraint:
 	mkdir -p policy/lib/konstraint \
 		&& conftest pull github.com/plexsystems/konstraint/examples/lib -p policy/lib/konstraint
 
-opa-deps-deprek8ion:
-	mkdir -p policy/lib/deprek8ion \
-		&& conftest pull github.com/swade1987/deprek8ion/policies -p policy/lib/deprek8ion
+# opa-deps-deprek8ion:
+# 	mkdir -p policy/lib/deprek8ion \
+# 		&& conftest pull github.com/swade1987/deprek8ion/policies -p policy/lib/deprek8ion
 
 .PHONY: opa-deps
-opa-deps: opa-deps-konstraint opa-deps-deprek8ion ## Update dependencies
+opa-deps: opa-deps-konstraint ## Update dependencies
+
+PHONY: opa-doc
+opa-doc: ## Generate documentation
+	@konstraint doc ./policy

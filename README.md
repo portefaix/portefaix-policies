@@ -1,8 +1,8 @@
-# Portefaix OPA
+# Portefaix Policies
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![](https://github.com/portefaix-hub/charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com/portefaix-hub/charts/actions)
-[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/portefaix-hub)](https://artifacthub.io/packages/search?repo=portefaix-hub)
+[![](https://gitpolicies.com/portefaix-policies/charts/workflows/Release%20Charts/badge.svg?branch=master)](https://gitpolicies.com/portefaix-policies/charts/actions)
+[![Artifact policies](https://img.shields.io/endpoint?url=https://artifactpolicies.io/badge/repository/portefaix-policies)](https://artifactpolicies.io/packages/search?repo=portefaix-policies)
 
 ## Usage
 
@@ -10,7 +10,7 @@
 
 ## Policies
 
-See [Artifact Hub](https://artifacthub.io/packages/search?repo=portefaix-opa) for a complete list.
+See [Artifact policies](https://artifactpolicies.io/packages/search?repo=portefaix-policies) for a complete list.
 
 ## Contributing
 
