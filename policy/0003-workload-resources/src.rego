@@ -1,4 +1,4 @@
-# @title PORTEFAIX-0003: Workload must define resource contraintes
+# @title Workload must define resource contraintes
 #
 # Resource constraints on containers ensure that a given workload does not take up more resources than it requires
 # and potentially starve other applications that need to run.
