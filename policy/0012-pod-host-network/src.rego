@@ -13,12 +13,12 @@ import data.lib.pods
 policyID := "PORTEFAIX_0012"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_network(pod)
+	pods.pod[pod]
+	pod_host_network(pod)
 
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host networking", [core.kind, core.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host networking", [core.kind, core.name]), policyID)
 }
 
 pod_host_network(pod) {
-    pod.spec.hostNetwork
+	pod.spec.hostNetwork
 }

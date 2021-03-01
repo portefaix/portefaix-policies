@@ -3,7 +3,7 @@
 # This is to prevent that the secret values appear in the command that was
 # used to start the container, which may be inspected by individuals that
 #  shouldn't have access to the secret values.
-# 
+#
 # See: https://learnk8s.io/production-best-practices#application-development
 #
 # @kinds apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod

@@ -7,18 +7,18 @@
 
 package pod_run_as_nonroot
 
-import data.lib.pods
 import data.lib.core
+import data.lib.pods
 
 policyID := "PORTEFAIX_0014"
 
 violation[msg] {
-    pods.pod[pod]
-    not pod_run_as_non_root(pod)
+	pods.pod[pod]
+	not pod_run_as_non_root(pod)
 
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run as non-root", [core.kind, core.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run as non-root", [core.kind, core.name]), policyID)
 }
 
 pod_run_as_non_root(pod) {
-    pod.spec.securityContext.runAsNonRoot
+	pod.spec.securityContext.runAsNonRoot
 }
