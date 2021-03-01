@@ -10,7 +10,7 @@ package pod_run_as_nonroot
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX_0014"
+policyID := "PORTEFAIX-0014"
 
 violation[msg] {
 	pods.pod[pod]

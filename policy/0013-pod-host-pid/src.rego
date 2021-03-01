@@ -11,7 +11,7 @@ package pod_host_pid
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX_0013"
+policyID := "PORTEFAIX-0013"
 
 violation[msg] {
 	pods.pod[pod]

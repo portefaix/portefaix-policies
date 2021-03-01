@@ -13,9 +13,9 @@
 * [PORTEFAIX-0009: Container must not allow for privilege escalation](#portefaix-0009-container-must-not-allow-for-privilege-escalation)
 * [PORTEFAIX-0010: Pod must run without access to the host aliases](#portefaix-0010-pod-must-run-without-access-to-the-host-aliases)
 * [PORTEFAIX-0011: Pod must run without access to the host IPC](#portefaix-0011-pod-must-run-without-access-to-the-host-ipc)
-* [PORTEFAIX_0012: Pod must run without access to the host networking](#portefaix_0012-pod-must-run-without-access-to-the-host-networking)
-* [PORTEFAIX_0013: Pod must run without access to the host PID namespace](#portefaix_0013-pod-must-run-without-access-to-the-host-pid-namespace)
-* [PORTEFAIX_0014: Pod must run as non-root](#portefaix_0014-pod-must-run-as-non-root)
+* [PORTEFAIX-0012: Pod must run without access to the host networking](#portefaix-0012-pod-must-run-without-access-to-the-host-networking)
+* [PORTEFAIX-0013: Pod must run without access to the host PID namespace](#portefaix-0013-pod-must-run-without-access-to-the-host-pid-namespace)
+* [PORTEFAIX-0014: Pod must run as non-root](#portefaix-0014-pod-must-run-as-non-root)
 
 ## PORTEFAIX-0001: Common Kubernetes labels are set
 
@@ -397,7 +397,7 @@ pod_host_ipc(pod) {
 
 _source: [policy/0011-pod-host-ipc](policy/0011-pod-host-ipc)_
 
-## PORTEFAIX_0012: Pod must run without access to the host networking
+## PORTEFAIX-0012: Pod must run without access to the host networking
 
 **Severity:** Violation
 
@@ -414,7 +414,7 @@ package pod_host_network
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX_0012"
+policyID := "PORTEFAIX-0012"
 
 violation[msg] {
 	pods.pod[pod]
@@ -430,7 +430,7 @@ pod_host_network(pod) {
 
 _source: [policy/0012-pod-host-network](policy/0012-pod-host-network)_
 
-## PORTEFAIX_0013: Pod must run without access to the host PID namespace
+## PORTEFAIX-0013: Pod must run without access to the host PID namespace
 
 **Severity:** Violation
 
@@ -448,7 +448,7 @@ package pod_host_pid
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX_0013"
+policyID := "PORTEFAIX-0013"
 
 violation[msg] {
 	pods.pod[pod]
@@ -463,7 +463,7 @@ pod_host_pid(pod) {
 
 _source: [policy/0013-pod-host-pid](policy/0013-pod-host-pid)_
 
-## PORTEFAIX_0014: Pod must run as non-root
+## PORTEFAIX-0014: Pod must run as non-root
 
 **Severity:** Violation
 
@@ -480,7 +480,7 @@ package pod_run_as_nonroot
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX_0014"
+policyID := "PORTEFAIX-0014"
 
 violation[msg] {
 	pods.pod[pod]
