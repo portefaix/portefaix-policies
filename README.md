@@ -8,7 +8,7 @@
 
 
 
-## Policies
+## Documentation
 
 [policies](https://github.com/nlamirault/portefaix-policies/blob/master/policies.md)
 
