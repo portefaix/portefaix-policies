@@ -5,6 +5,8 @@
 * [PORTEFAIX-0001: Common Kubernetes labels are set](#portefaix-0001-common-kubernetes-labels-are-set)
 * [PORTEFAIX-0002: Container must not use latest image tag](#portefaix-0002-container-must-not-use-latest-image-tag)
 * [PORTEFAIX-0003: Workload must define resource contraintes](#portefaix-0003-workload-must-define-resource-contraintes)
+* [PORTEFAIX-0004: Container must set liveness probe](#portefaix-0004-container-must-set-liveness-probe)
+* [PORTEFAIX-0005: Container must set readiness probe](#portefaix-0005-container-must-set-readiness-probe)
 
 ## PORTEFAIX-0001: Common Kubernetes labels are set
 
@@ -85,6 +87,8 @@ _source: [policy/0002-container-image-tag](policy/0002-container-image-tag)_
 Resource constraints on containers ensure that a given workload does not take up more resources than it requires
 and potentially starve other applications that need to run.
 
+See: https://kubesec.io/basics/containers-resources-limits-cpu/
+
 ### Rego
 
 ```rego
@@ -98,7 +102,6 @@ policyID := "PORTEFAIX-0003"
 violation[msg] {
 	pods.containers[container]
 	not container_resources_provided(container)
-
 	msg := core.format_with_id(sprintf("%s/%s/%s: Container resource constraints must be specified", [core.kind, core.name, container.name]), policyID)
 }
 
@@ -111,3 +114,69 @@ container_resources_provided(container) {
 ```
 
 _source: [policy/0003-workload-resources](policy/0003-workload-resources)_
+
+## PORTEFAIX-0004: Container must set liveness probe
+
+**Severity:** Violation
+
+**Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Indicates whether the container is running
+
+See: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+
+### Rego
+
+```rego
+package container_liveness_probe
+
+import data.lib.core
+import data.lib.pods
+
+policyID := "PORTEFAIX-0004"
+
+violation[msg] {
+	pods.containers[container]
+	not container_liveness_probe_provided(container)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container liveness probe be specified", [core.kind, core.name, container.name]), policyID)
+}
+
+container_liveness_probe_provided(container) {
+	core.has_field(container, "livenessProbe")
+}
+```
+
+_source: [policy/0004-container-liveness-probe](policy/0004-container-liveness-probe)_
+
+## PORTEFAIX-0005: Container must set readiness probe
+
+**Severity:** Violation
+
+**Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Indicates whether the container is ready to respond to requests
+
+See: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+
+### Rego
+
+```rego
+package container_readiness_probe
+
+import data.lib.core
+import data.lib.pods
+
+policyID := "PORTEFAIX-0005"
+
+violation[msg] {
+	pods.containers[container]
+	not container_liveness_probe_provided(container)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container readiness probe be specified", [core.kind, core.name, container.name]), policyID)
+}
+
+container_liveness_probe_provided(container) {
+	core.has_field(container, "readinessProbe")
+}
+```
+
+_source: [policy/0005-container-readiness-probe](policy/0005-container-readiness-probe)_
