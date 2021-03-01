@@ -34,18 +34,18 @@ import data.lib.core # as konstraint_core
 
 policyID := "PORTEFAIX-0001"
 
-recommended_labels(metadata) {
+violation[msg] {
+	not recommended_labels_provided(core.resource.metadata)
+	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), "PORTEFAIX-0001")
+}
+
+recommended_labels_provided(metadata) {
 	metadata.labels["app.kubernetes.io/name"]
 	metadata.labels["app.kubernetes.io/instance"]
 	metadata.labels["app.kubernetes.io/version"]
 	metadata.labels["app.kubernetes.io/component"]
 	metadata.labels["app.kubernetes.io/part-of"]
 	metadata.labels["app.kubernetes.io/managed-by"]
-}
-
-violation[msg] {
-	not recommended_labels(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), "PORTEFAIX-0001")
 }
 ```
 
@@ -285,13 +285,13 @@ import data.lib.security
 policyID := "PORTEFAIX-0008"
 
 violation[msg] {
-    pods.containers[container]
-    not container_dropped_all_capabilities(container)
-    msg := core.format_with_id(sprintf("%s/%s/%s: Container must drop all capabilities", [core.kind, core.name, container.name]), policyID)
+	pods.containers[container]
+	not container_dropped_all_capabilities(container)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container must drop all capabilities", [core.kind, core.name, container.name]), policyID)
 }
 
 container_dropped_all_capabilities(container) {
-    security.dropped_capability(container, "all")
+	security.dropped_capability(container, "all")
 }
 ```
 
@@ -316,18 +316,18 @@ import data.lib.pods
 policyID := "PORTEFAIX-0009"
 
 violation[msg] {
-    pods.containers[container]
-    container_allows_escalation(container)
+	pods.containers[container]
+	container_allows_escalation(container)
 
-    msg := core.format_with_id(sprintf("%s/%s: Allows privilege escalation", [core.kind, core.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s: Allows privilege escalation", [core.kind, core.name]), policyID)
 }
 
 container_allows_escalation(c) {
-    c.securityContext.allowPrivilegeEscalation == true
+	c.securityContext.allowPrivilegeEscalation == true
 }
 
 container_allows_escalation(c) {
-    core.missing_field(c.securityContext, "allowPrivilegeEscalation")
+	core.missing_field(c.securityContext, "allowPrivilegeEscalation")
 }
 ```
 
@@ -353,13 +353,13 @@ import data.lib.pods
 policyID := "PORTEFAIX-0010"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_alias(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pod must not have hostAliases", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_alias(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must not have hostAliases", [core.kind, core.name]), policyID)
 }
 
 pod_host_alias(pod) {
-    pod.spec.hostAliases
+	pod.spec.hostAliases
 }
 ```
 
@@ -385,13 +385,13 @@ import data.lib.pods
 policyID := "PORTEFAIX-0011"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_ipc(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host IPC", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_ipc(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host IPC", [core.kind, core.name]), policyID)
 }
 
 pod_host_ipc(pod) {
-    pod.spec.hostIPC
+	pod.spec.hostIPC
 }
 ```
 
@@ -417,14 +417,14 @@ import data.lib.pods
 policyID := "PORTEFAIX_0012"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_network(pod)
+	pods.pod[pod]
+	pod_host_network(pod)
 
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host networking", [core.kind, core.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run without access to the host networking", [core.kind, core.name]), policyID)
 }
 
 pod_host_network(pod) {
-    pod.spec.hostNetwork
+	pod.spec.hostNetwork
 }
 ```
 
@@ -451,13 +451,13 @@ import data.lib.pods
 policyID := "PORTEFAIX_0013"
 
 violation[msg] {
-    pods.pod[pod]
-    pod_host_pid(pod)
-    msg := core.format_with_id(sprintf("%s/%s: Pods must run without access to the host PID namespace", [core.kind, core.name]), policyID)
+	pods.pod[pod]
+	pod_host_pid(pod)
+	msg := core.format_with_id(sprintf("%s/%s: Pods must run without access to the host PID namespace", [core.kind, core.name]), policyID)
 }
 
 pod_host_pid(pod) {
-    pod.spec.hostPID
+	pod.spec.hostPID
 }
 ```
 
@@ -477,20 +477,20 @@ to root on the node. As such, they are not allowed.
 ```rego
 package pod_run_as_nonroot
 
-import data.lib.pods
 import data.lib.core
+import data.lib.pods
 
 policyID := "PORTEFAIX_0014"
 
 violation[msg] {
-    pods.pod[pod]
-    not pod_run_as_non_root(pod)
+	pods.pod[pod]
+	not pod_run_as_non_root(pod)
 
-    msg := core.format_with_id(sprintf("%s/%s: Pod must run as non-root", [core.kind, core.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s: Pod must run as non-root", [core.kind, core.name]), policyID)
 }
 
 pod_run_as_non_root(pod) {
-    pod.spec.securityContext.runAsNonRoot
+	pod.spec.securityContext.runAsNonRoot
 }
 ```
 
