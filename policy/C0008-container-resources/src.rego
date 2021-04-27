@@ -12,7 +12,7 @@ package container_resource_constraints
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0003"
+policyID := "PORTEFAIX-C0008"
 
 violation[msg] {
 	pods.containers[container]

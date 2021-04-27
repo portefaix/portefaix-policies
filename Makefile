@@ -94,16 +94,10 @@ check: check-konstraint ## Check requirements
 
 ##@ Opa
 
-opa-deps-konstraint:
-	mkdir -p policy/lib/konstraint \
-		&& conftest pull github.com/plexsystems/konstraint/examples/lib -p policy/lib/konstraint
-
-# opa-deps-deprek8ion:
-# 	mkdir -p policy/lib/deprek8ion \
-# 		&& conftest pull github.com/swade1987/deprek8ion/policies -p policy/lib/deprek8ion
-
 .PHONY: opa-deps
-opa-deps: opa-deps-konstraint ## Update dependencies
+opa-deps: ## Update dependencies
+	conftest pull --policy policy/lib/konstraint github.com/plexsystems/konstraint/examples/lib
+	conftest pull --policy addons/policies/deprek8ion github.com/swade1987/deprek8ion//policies
 
 PHONY: opa-doc
 opa-doc: ## Generate documentation

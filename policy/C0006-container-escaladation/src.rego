@@ -9,7 +9,7 @@ package container_escalation
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0009"
+policyID := "PORTEFAIX-C0006"
 
 violation[msg] {
 	pods.containers[container]

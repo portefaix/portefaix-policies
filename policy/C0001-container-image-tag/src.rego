@@ -9,7 +9,7 @@ package container_image_tag
 import data.lib.core # as konstraint_core
 import data.lib.pods # as konstraint_pods
 
-policyID := "PORTEFAIX-0002"
+policyID := "PORTEFAIX-C0001"
 
 violation[msg] {
 	pods.containers[container]

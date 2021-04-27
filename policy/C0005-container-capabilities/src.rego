@@ -11,7 +11,7 @@ import data.lib.core
 import data.lib.pods
 import data.lib.security
 
-policyID := "PORTEFAIX-0008"
+policyID := "PORTEFAIX-C0005"
 
 violation[msg] {
 	pods.containers[container]

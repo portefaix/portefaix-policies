@@ -12,7 +12,7 @@ package container_readiness_probe
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0005"
+policyID := "PORTEFAIX-C0003"
 
 violation[msg] {
 	pods.containers[container]

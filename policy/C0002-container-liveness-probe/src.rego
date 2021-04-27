@@ -11,7 +11,7 @@ package container_liveness_probe
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0004"
+policyID := "PORTEFAIX-C0002"
 
 violation[msg] {
 	pods.containers[container]

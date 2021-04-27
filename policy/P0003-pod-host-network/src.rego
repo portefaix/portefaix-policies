@@ -10,7 +10,7 @@ package pod_host_network
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0012"
+policyID := "PORTEFAIX-P0003"
 
 violation[msg] {
 	pods.pod[pod]
