@@ -37,6 +37,6 @@ jobs:
     - name: OPA Test
       uses: petroprotsakh/opa-test-action@v2.1
       with:
-        options: --show-failure-line
+        options: -f pretty -v
         tests: |
           policy
