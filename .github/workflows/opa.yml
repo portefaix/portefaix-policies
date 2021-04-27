@@ -34,21 +34,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Run opa test
-      uses: b4b4r07/action-opa@v0.1.3
-      id: opa
+    - name: OPA Test
+      uses: petroprotsakh/opa-test-action@v2.1
       with:
-        path: policy
-
-    # - name: Post opa command result to GitHub comment
-    #   uses: b4b4r07/action-github-comment@master
-    #   if: steps.opa.outputs.result
-    #   with:
-    #     body: |
-    #       ## opa test result
-    #       ```
-    #       ${{ steps.opa.outputs.result }}
-    #       ```
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     LOG: trace
+        options: --show-failure-line
+        tests: |
+          policy
