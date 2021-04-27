@@ -107,6 +107,10 @@ PHONY: opa-doc
 opa-doc: ## Generate documentation
 	@konstraint doc ./policy
 
-POHONY: opa-test
+PHONY: opa-test
 opa-test: ## Test policies
-	@opa test policy
+	@opa test policy -f pretty -v
+
+PHONY: opa-fmt
+opa-fmt: ## Format OPA files
+	@opa fmt policy -w
