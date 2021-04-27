@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: "Label PRs from globs"
+name: Prow / Pull Request Labeler
 on:
   schedule:
   - cron: "0 * * * *"
