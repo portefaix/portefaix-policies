@@ -15,10 +15,16 @@
 name: Open Policy Agent
 
 on:
+  push:
+    branches:
+      - master
+    # paths:
+    #   - "policy/**"
   pull_request:
-    paths:
-      - '.github/workflows/opa.yml' ## self-trigger
-      - '.policy/**'
+    branches:
+      - master
+    # paths:
+    #   - "policy/**"
 
 jobs:
   opa:
@@ -31,6 +37,8 @@ jobs:
     - name: Run opa test
       uses: b4b4r07/action-opa@v0.1.3
       id: opa
+      with:
+        path: policy
 
     # - name: Post opa command result to GitHub comment
     #   uses: b4b4r07/action-github-comment@master
