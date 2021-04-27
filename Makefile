@@ -87,6 +87,10 @@ clean: ## Cleanup
 .PHONY: check
 check: check-konstraint ## Check requirements
 
+.PHONY: validate
+validate: ## Execute git-hooks
+	@pre-commit run -a
+
 
 # ====================================
 # O P A
