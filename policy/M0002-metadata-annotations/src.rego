@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# @title Annotating Kubernetes Services for Humans
+# @title Metadata should have a8r.io annotations
 #
 # See: https://ambassadorlabs.github.io/k8s-for-humans/
 
@@ -24,7 +24,7 @@ policyID := "PORTEFAIX-M0002"
 
 warn[msg] {
 	not recommended_annotations_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected a8r annotations", [core.kind, core.name]), policyID)
+	msg = core.format_with_id(sprintf("%s/%s: should have all the expected a8r.io annotations", [core.kind, core.name]), policyID)
 }
 
 recommended_annotations_provided(metadata) {

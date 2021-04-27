@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# @title Common Kubernetes labels are set
+# @title Metadata must set recommanded Kubernetes labels
 #
 # See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
 
@@ -24,7 +24,7 @@ policyID := "PORTEFAIX-M0001"
 
 violation[msg] {
 	not recommended_labels_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), policyID)
+	msg = core.format_with_id(sprintf("%s/%s: does not contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
 }
 
 recommended_labels_provided(metadata) {

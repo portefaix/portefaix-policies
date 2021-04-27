@@ -10,7 +10,7 @@
 * [PORTEFAIX-C0006: Container must not allow for privilege escalation](#portefaix-c0006-container-must-not-allow-for-privilege-escalation)
 * [PORTEFAIX-C0007: Container must set readiness probe](#portefaix-c0007-container-must-set-readiness-probe)
 * [PORTEFAIX-C0008: Container must define resource contraintes](#portefaix-c0008-container-must-define-resource-contraintes)
-* [PORTEFAIX-M0001: Common Kubernetes labels are set](#portefaix-m0001-common-kubernetes-labels-are-set)
+* [PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels](#portefaix-m0001-metadata-must-set-recommanded-kubernetes-labels)
 * [PORTEFAIX-P0001: Pod must run without access to the host aliases](#portefaix-p0001-pod-must-run-without-access-to-the-host-aliases)
 * [PORTEFAIX-P0002: Pod must run without access to the host IPC](#portefaix-p0002-pod-must-run-without-access-to-the-host-ipc)
 * [PORTEFAIX-P0003: Pod must run without access to the host networking](#portefaix-p0003-pod-must-run-without-access-to-the-host-networking)
@@ -19,7 +19,7 @@
 
 ## Warnings
 
-* [PORTEFAIX-M0002: Annotating Kubernetes Services for Humans](#portefaix-m0002-annotating-kubernetes-services-for-humans)
+* [PORTEFAIX-M0002: Metadata should have a8r.io annotations](#portefaix-m0002-metadata-should-have-a8r.io-annotations)
 
 ## PORTEFAIX-C0001: Container must not use latest image tag
 
@@ -415,7 +415,7 @@ container_resources_provided(container) {
 
 _source: [policy/C0008-container-resources](policy/C0008-container-resources)_
 
-## PORTEFAIX-M0001: Common Kubernetes labels are set
+## PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels
 
 **Severity:** Violation
 
@@ -448,7 +448,7 @@ policyID := "PORTEFAIX-M0001"
 
 violation[msg] {
 	not recommended_labels_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), policyID)
+	msg = core.format_with_id(sprintf("%s/%s: does not contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
 }
 
 recommended_labels_provided(metadata) {
@@ -696,7 +696,7 @@ pod_host_pid(pod) {
 
 _source: [policy/P0005-pod-host-pid](policy/P0005-pod-host-pid)_
 
-## PORTEFAIX-M0002: Annotating Kubernetes Services for Humans
+## PORTEFAIX-M0002: Metadata should have a8r.io annotations
 
 **Severity:** Warning
 
@@ -729,7 +729,7 @@ policyID := "PORTEFAIX-M0002"
 
 warn[msg] {
 	not recommended_annotations_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected a8r annotations", [core.kind, core.name]), policyID)
+	msg = core.format_with_id(sprintf("%s/%s: should have all the expected a8r.io annotations", [core.kind, core.name]), policyID)
 }
 
 recommended_annotations_provided(metadata) {
