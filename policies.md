@@ -27,6 +27,20 @@
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 See: https://kubernetes.io/docs/concepts/configuration/overview/#container-images
 
 ### Rego
@@ -63,6 +77,20 @@ _source: [policy/C0001-container-image-tag](policy/C0001-container-image-tag)_
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Indicates whether the container is running
 
 See: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
@@ -95,6 +123,20 @@ _source: [policy/C0002-container-liveness-probe](policy/C0002-container-liveness
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Indicates whether the container is ready to respond to requests. If you don't set the readiness probe,
 the kubelet assumes that the app is ready to receive traffic as soon as the container starts.
@@ -129,6 +171,20 @@ _source: [policy/C0003-container-readiness-probe](policy/C0003-container-readine
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 This is to prevent that the secret values appear in the command that was
 used to start the container, which may be inspected by individuals that
@@ -166,6 +222,20 @@ _source: [policy/C0004-container-secret-not-env](policy/C0004-container-secret-n
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Granting containers privileged capabilities on the node makes it easier
 for containers to escalate their privileges.
 
@@ -198,6 +268,20 @@ _source: [policy/C0005-container-capabilities](policy/C0005-container-capabiliti
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Privileged containers can much more easily obtain root on the node.
 
@@ -234,6 +318,20 @@ _source: [policy/C0006-container-escaladation](policy/C0006-container-escaladati
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 When Liveness and Readiness probes are pointing to the same endpoint,
 the effects of the probes are combined.
@@ -272,6 +370,20 @@ _source: [policy/C0007-container-same-probes](policy/C0007-container-same-probes
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Resource constraints on containers ensure that a given workload does not take up more resources than it requires
 and potentially starve other applications that need to run.
 
@@ -309,6 +421,20 @@ _source: [policy/C0008-container-resources](policy/C0008-container-resources)_
 
 **Resources:** Any Resource
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
 
 ### Rego
@@ -343,6 +469,20 @@ _source: [policy/M0001-metadata-labels](policy/M0001-metadata-labels)_
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Pods that can change aliases in the host's /etc/hosts file can
 redirect traffic to malicious servers.
 
@@ -375,6 +515,20 @@ _source: [policy/P0001-pod-host-alias](policy/P0001-pod-host-alias)_
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Pods that are allowed to access the host IPC can read memory of
 the other containers, breaking that security boundary.
 
@@ -406,6 +560,20 @@ _source: [policy/P0002-pod-host-ipc](policy/P0002-pod-host-ipc)_
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Pods that can access the host's network interfaces can potentially
 access and tamper with traffic the pod should not have access to.
@@ -440,6 +608,20 @@ _source: [policy/P0003-pod-host-network](policy/P0003-pod-host-network)_
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
 
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 Pods running as root (uid of 0) can much more easily escalate privileges
 to root on the node. As such, they are not allowed.
 
@@ -472,6 +654,20 @@ _source: [policy/P0004-pod-without-runasnonroot](policy/P0004-pod-without-runasn
 **Severity:** Violation
 
 **Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Pods that can access the host's process tree can view and attempt to
 modify processes outside of their namespace, breaking that security
