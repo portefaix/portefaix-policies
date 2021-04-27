@@ -9,13 +9,13 @@ package container_image_tag
 import data.lib.core # as konstraint_core
 import data.lib.pods # as konstraint_pods
 
-policyID := "PORTEFAIX-0002"
+# policyID := "PORTEFAIX-C0001"
 
 violation[msg] {
 	pods.containers[container]
 	has_latest_tag(container)
 
-	msg := core.format_with_id(sprintf("%s/%s/%s: Images must not use the latest tag", [core.kind, core.name, container.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Images must not use the latest tag", [core.kind, core.name, container.name]), "PORTEFAIX-C0001")
 }
 
 has_latest_tag(c) {

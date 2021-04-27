@@ -14,7 +14,7 @@ package container_same_probes
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0006"
+policyID := "PORTEFAIX-C0007"
 
 violation[msg] {
 	pods.containers[container]

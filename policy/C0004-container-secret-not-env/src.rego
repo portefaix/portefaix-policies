@@ -13,7 +13,7 @@ package container_mount_secrets
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0007"
+policyID := "PORTEFAIX-C0004"
 
 violation[msg] {
 	pods.containers[container]

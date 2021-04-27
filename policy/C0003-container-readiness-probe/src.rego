@@ -12,12 +12,12 @@ package container_readiness_probe
 import data.lib.core
 import data.lib.pods
 
-policyID := "PORTEFAIX-0005"
+# policyID := "PORTEFAIX-C0003"
 
 violation[msg] {
 	pods.containers[container]
 	not container_liveness_probe_provided(container)
-	msg := core.format_with_id(sprintf("%s/%s/%s: Container readiness probe be specified", [core.kind, core.name, container.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container readiness probe be specified", [core.kind, core.name, container.name]), "PORTEFAIX-C0003")
 }
 
 container_liveness_probe_provided(container) {
