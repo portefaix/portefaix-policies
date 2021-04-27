@@ -18,13 +18,13 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - "policy/**"
+    paths:
+      - "policy/**"
   pull_request:
     branches:
       - master
-    # paths:
-    #   - "policy/**"
+    paths:
+      - "policy/**"
 
 jobs:
   opa:
