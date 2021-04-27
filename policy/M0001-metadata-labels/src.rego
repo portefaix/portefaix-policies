@@ -6,11 +6,11 @@ package k8s_labels
 
 import data.lib.core # as konstraint_core
 
-# policyID := "PORTEFAIX-M0001"
+policyID := "PORTEFAIX-M0001"
 
 violation[msg] {
 	not recommended_labels_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), "PORTEFAIX-M0001")
+	msg = core.format_with_id(sprintf("%s/%s: does not contain all the expected k8s labels", [core.kind, core.name]), policyID)
 }
 
 recommended_labels_provided(metadata) {
