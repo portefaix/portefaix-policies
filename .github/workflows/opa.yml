@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Open Policy Agent
+name: Open Policy Agent / Tests
 
 on:
   push:
     branches:
       - master
-    # paths:
-    #   - "policy/**"
+    paths:
+      - "policy/**"
   pull_request:
     branches:
       - master
-    # paths:
-    #   - "policy/**"
+    paths:
+      - "policy/**"
 
 jobs:
   opa:
