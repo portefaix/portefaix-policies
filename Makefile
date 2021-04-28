@@ -105,12 +105,12 @@ opa-deps: ## Update dependencies
 
 PHONY: opa-doc
 opa-doc: ## Generate documentation
-	@konstraint doc ./policy
+	@konstraint doc ./opa
 
 PHONY: opa-test
 opa-test: ## Test policies
-	@opa test policy -f pretty -v
+	@opa test opa -f pretty -v
 
 PHONY: opa-fmt
 opa-fmt: ## Format OPA files
-	@opa fmt policy -w
+	@opa fmt opa -w
