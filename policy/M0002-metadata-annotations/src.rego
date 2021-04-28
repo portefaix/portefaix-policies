@@ -33,6 +33,5 @@ recommended_annotations_provided(metadata) {
 	metadata.annotations["a8r.io/bugs"]
 	metadata.annotations["a8r.io/documentation"]
 	metadata.annotations["a8r.io/repository"]
-	metadata.annotations["a8r.io/description"]
 	metadata.annotations["a8r.io/support"]
 }
