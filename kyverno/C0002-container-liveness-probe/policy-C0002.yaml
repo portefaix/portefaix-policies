@@ -15,9 +15,9 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: portefaix-C0004
+  name: portefaix-C0002
   annotations:
-    policies.kyverno.io/title: portefaix-C0004
+    policies.kyverno.io/title: portefaix-C0002
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: medium
     policies.kyverno.io/description: >-

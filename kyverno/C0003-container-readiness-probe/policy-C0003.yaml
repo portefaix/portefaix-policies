@@ -38,7 +38,5 @@ spec:
       pattern:
         spec:
           containers:
-          # - livenessProbe:
-          #     periodSeconds: "?*"
           - readinessProbe:
               periodSeconds: "?*"

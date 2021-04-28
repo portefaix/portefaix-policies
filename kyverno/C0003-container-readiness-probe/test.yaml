@@ -26,3 +26,7 @@ results:
     rule: validate-readiness-probe
     resource: myapp-pod-ko
     status: fail
+  - policy: portefaix-C0003
+    rule: validate-readiness-probe
+    resource: myapp-pod-ko-2
+    status: pass
