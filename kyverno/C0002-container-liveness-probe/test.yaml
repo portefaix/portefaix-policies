@@ -12,17 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: test-portefaix-C0004
+name: test-portefaix-C0002
 policies:
-  -  policy-C0004.yaml
+  -  policy-C0002.yaml
 resources:
   -  resource.yaml
 results:
-  - policy: portefaix-C0004
+  - policy: portefaix-C0002
     rule: validate-liveness-probe
     resource: myapp-pod-ok
     status: pass
-  - policy: portefaix-C0004
+  - policy: portefaix-C0002
     rule: validate-liveness-probe
     resource: myapp-pod-ko
     status: fail
