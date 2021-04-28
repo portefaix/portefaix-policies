@@ -39,3 +39,9 @@ jobs:
       with:
         command: |
           kyverno validate ./kyverno
+
+    - name: Test policies
+      uses: gbaeke/kyverno-cli@v1
+      with:
+        command: |
+          kyverno test ./kyverno
