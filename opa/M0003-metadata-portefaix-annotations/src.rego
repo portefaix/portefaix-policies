@@ -12,31 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Open Policy Agent / Tests
+# @title Metadata should have portefaix.xyz annotations
+#
+#
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - "opa/**"
-  pull_request:
-    branches:
-      - master
-    paths:
-      - "opa/**"
+package k8s_annotations_portefaix
 
-jobs:
-  opa:
-    name: opa test
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+import data.lib.core # as konstraint_core
 
-    - name: OPA Test
-      uses: petroprotsakh/opa-test-action@v2.1
-      with:
-        options: -f pretty -v
-        tests: |
-          opa
+policyID := "PORTEFAIX-M0003"
+
+warn[msg] {
+	not recommended_portefaix_annotations_provided(core.resource.metadata)
+	msg = core.format_with_id(sprintf("%s/%s: should have all the expected portefaix.xyz annotations", [core.kind, core.name]), policyID)
+}
+
+recommended_portefaix_annotations_provided(metadata) {
+	metadata.annotations["portefaix.xyz/version"]
+}

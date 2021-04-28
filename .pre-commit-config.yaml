@@ -53,10 +53,10 @@ repos:
   hooks:
   - id: opa-fmt
   - id: opa-check
-    args: ['policy']
+    args: ['opa']
   - id: opa-test
-    args: ['policy']
+    args: ['opa']
 #   - id: conftest-test
-#     args: ['--policy', 'policy']
+#     args: ['--policy', 'opa']
   - id: conftest-verify
-    args: ['--data', 'policy']
+    args: ['--data', 'opa/lib', '--policy', 'opa']
