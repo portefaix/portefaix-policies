@@ -12,27 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: kyverno.io/v1
-kind: ClusterPolicy
+---
+apiVersion: v1
+kind: Pod
 metadata:
-  name: portefaix-M0003
-  annotations:
-    policies.kyverno.io/title: portefaix-M0003
-    policies.kyverno.io/category: Best Practices
-    policies.kyverno.io/severity: medium
-    policies.kyverno.io/description: >-
-      Metadata should have Portefaix annotations
+  name: myapp-pod-ok
+  labels:
+    app.kubernetes.io/name: "kyverno-policies"
+    app.kubernetes.io/instance: "kyverno-policies"
+    app.kubernetes.io/component: "kyverno"
+    app.kubernetes.io/part-of: "kyverno-policies"
+    app.kubernetes.io/managed-by: "kubectl"
 spec:
-  validationFailureAction: audit
-  rules:
-  - name: check-for-portefaix.xyz-annotations
-    match:
-      resources:
-        kinds:
-        - Pod
-    validate:
-      message: "portefaix.xyz annotations is required."
-      pattern:
-        metadata:
-          annotations:
-            portefaix.xyz/version: "?*"
+  containers:
+  - name: nginx
+    image: nginx:1.12
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-ko
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.12

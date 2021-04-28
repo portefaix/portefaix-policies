@@ -30,7 +30,7 @@ spec:
     match:
       resources:
         kinds:
-        - Pods
+        - Pod
     validate:
       message: "Kubernetes recommanded labels is required."
       pattern:

@@ -30,7 +30,7 @@ spec:
     match:
       resources:
         kinds:
-        - Pods
+        - Pod
     validate:
       message: "a8r.io annotations is required."
       pattern:

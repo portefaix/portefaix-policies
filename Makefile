@@ -114,3 +114,18 @@ opa-test: ## Test policies
 PHONY: opa-fmt
 opa-fmt: ## Format OPA files
 	@opa fmt opa -w
+
+
+# ====================================
+# K Y V E R N O
+# ====================================
+
+##@ Kyverno
+
+.PHONY: kyverno-validate
+kyverno-validate: ## Validate policies
+	@kyverno validate ./kyverno/
+
+.PHONY: kyverno-test
+kyverno-test: ## Test policies
+	@kyverno test ./kyverno/
