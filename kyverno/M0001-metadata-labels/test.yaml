@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
 name: test-portefaix-M0001
 policies:
   -  policy-M0001.yaml
