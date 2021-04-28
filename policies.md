@@ -10,7 +10,6 @@
 * [PORTEFAIX-C0006: Container must not allow for privilege escalation](#portefaix-c0006-container-must-not-allow-for-privilege-escalation)
 * [PORTEFAIX-C0007: Container must set readiness probe](#portefaix-c0007-container-must-set-readiness-probe)
 * [PORTEFAIX-C0008: Container must define resource contraintes](#portefaix-c0008-container-must-define-resource-contraintes)
-* [PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels](#portefaix-m0001-metadata-must-set-recommanded-kubernetes-labels)
 * [PORTEFAIX-P0001: Pod must run without access to the host aliases](#portefaix-p0001-pod-must-run-without-access-to-the-host-aliases)
 * [PORTEFAIX-P0002: Pod must run without access to the host IPC](#portefaix-p0002-pod-must-run-without-access-to-the-host-ipc)
 * [PORTEFAIX-P0003: Pod must run without access to the host networking](#portefaix-p0003-pod-must-run-without-access-to-the-host-networking)
@@ -19,6 +18,7 @@
 
 ## Warnings
 
+* [PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels](#portefaix-m0001-metadata-must-set-recommanded-kubernetes-labels)
 * [PORTEFAIX-M0002: Metadata should have a8r.io annotations](#portefaix-m0002-metadata-should-have-a8r.io-annotations)
 
 ## PORTEFAIX-C0001: Container must not use latest image tag
@@ -415,54 +415,6 @@ container_resources_provided(container) {
 
 _source: [policy/C0008-container-resources](policy/C0008-container-resources)_
 
-## PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels
-
-**Severity:** Violation
-
-**Resources:** Any Resource
-
-Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
-
-### Rego
-
-```rego
-package k8s_labels
-
-import data.lib.core # as konstraint_core
-
-policyID := "PORTEFAIX-M0001"
-
-violation[msg] {
-	not recommended_labels_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
-}
-
-recommended_labels_provided(metadata) {
-	metadata.labels["app.kubernetes.io/name"]
-	metadata.labels["app.kubernetes.io/instance"]
-	metadata.labels["app.kubernetes.io/version"]
-	metadata.labels["app.kubernetes.io/component"]
-	metadata.labels["app.kubernetes.io/part-of"]
-	metadata.labels["app.kubernetes.io/managed-by"]
-}
-```
-
-_source: [policy/M0001-metadata-labels](policy/M0001-metadata-labels)_
-
 ## PORTEFAIX-P0001: Pod must run without access to the host aliases
 
 **Severity:** Violation
@@ -695,6 +647,54 @@ pod_host_pid(pod) {
 ```
 
 _source: [policy/P0005-pod-host-pid](policy/P0005-pod-host-pid)_
+
+## PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels
+
+**Severity:** Warning
+
+**Resources:** Any Resource
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
+
+### Rego
+
+```rego
+package k8s_labels
+
+import data.lib.core # as konstraint_core
+
+policyID := "PORTEFAIX-M0001"
+
+warn[msg] {
+	not recommended_labels_provided(core.resource.metadata)
+	msg = core.format_with_id(sprintf("%s/%s: should contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
+}
+
+recommended_labels_provided(metadata) {
+	metadata.labels["app.kubernetes.io/name"]
+	metadata.labels["app.kubernetes.io/instance"]
+	metadata.labels["app.kubernetes.io/version"]
+	metadata.labels["app.kubernetes.io/component"]
+	metadata.labels["app.kubernetes.io/part-of"]
+	metadata.labels["app.kubernetes.io/managed-by"]
+}
+```
+
+_source: [policy/M0001-metadata-labels](policy/M0001-metadata-labels)_
 
 ## PORTEFAIX-M0002: Metadata should have a8r.io annotations
 
