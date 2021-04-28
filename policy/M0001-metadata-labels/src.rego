@@ -22,9 +22,9 @@ import data.lib.core # as konstraint_core
 
 policyID := "PORTEFAIX-M0001"
 
-violation[msg] {
+warn[msg] {
 	not recommended_labels_provided(core.resource.metadata)
-	msg = core.format_with_id(sprintf("%s/%s: does not contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
+	msg = core.format_with_id(sprintf("%s/%s: should contain all recommanded Kubernetes labels", [core.kind, core.name]), policyID)
 }
 
 recommended_labels_provided(metadata) {
