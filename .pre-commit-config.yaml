@@ -28,21 +28,11 @@ repos:
 -   repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.1.10
     hooks:
-    -   id: insert-license
-        files: \.yaml
-        args:
-        - --license-filepath
-        - hack/config/licence.txt
-    -   id: insert-license
-        files: \.yml
-        args:
-        - --license-filepath
-        - hack/config/licence.txt
-    -   id: insert-license
-        files: \.tf
-        args:
-        - --license-filepath
-        - hack/config/licence.txt
+    # -   id: insert-license
+    #     files: \.yaml
+    #     args:
+    #     - --license-filepath
+    #     - hack/config/licence.txt
     -   id: insert-license
         files: \.rego
         args:
