@@ -1,18 +1,18 @@
 # Policies
 
-## medium
-* portefaix-C0001
-* portefaix-C0002
-* portefaix-C0003
-* portefaix-C0004
-* portefaix-C0005
-* portefaix-C0006
-* portefaix-C0007
-
 ## low
-* portefaix-M0001
-* portefaix-M0002
-* portefaix-M0003
+* portefaix-M0001(#portefaix-m0001)
+* portefaix-M0002(#portefaix-m0002)
+* portefaix-M0003(#portefaix-m0003)
+
+## medium
+* portefaix-C0001(#portefaix-c0001)
+* portefaix-C0002(#portefaix-c0002)
+* portefaix-C0003(#portefaix-c0003)
+* portefaix-C0004(#portefaix-c0004)
+* portefaix-C0005(#portefaix-c0005)
+* portefaix-C0006(#portefaix-c0006)
+* portefaix-C0007(#portefaix-c0007)
 
 ## portefaix-C0001
 
