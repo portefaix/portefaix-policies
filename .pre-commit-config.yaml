@@ -58,5 +58,6 @@ repos:
     name: Kyverno validate
     args: [./kyverno]
     verbose: true
-  # - id: kyverno-test
-  #   args: ["kyverno-policies"]
+  - id: kyverno-test
+    name: Kyverno test
+    args: ["./kyverno"]
