@@ -1,24 +1,24 @@
 # Policies
 
 ## medium
-* [portefaix-C0001 - Container must not use latest image tag](#portefaix-c0001)
-* [portefaix-C0002 - Container must set liveness probe](#portefaix-c0002)
-* [portefaix-C0003 - Container must set readiness probe](#portefaix-c0003)
-* [portefaix-C0004 - Container must mount secrets as volumes, not enviroment variables](#portefaix-c0004)
-* [portefaix-C0005 - Container must drop all capabilities](#portefaix-c0005)
-* [portefaix-C0006 - Container must not allow for privilege escalation](#portefaix-c0006)
-* [portefaix-C0008 - Container resource constraints must be specified](#portefaix-c0008)
+* [PORTEFAIX-C0001 - Container must not use latest image tag](#portefaix-c0001)
+* [PORTEFAIX-C0002 - Container must set liveness probe](#portefaix-c0002)
+* [PORTEFAIX-C0003 - Container must set readiness probe](#portefaix-c0003)
+* [PORTEFAIX-C0004 - Container must mount secrets as volumes, not enviroment variables](#portefaix-c0004)
+* [PORTEFAIX-C0005 - Container must drop all capabilities](#portefaix-c0005)
+* [PORTEFAIX-C0006 - Container must not allow for privilege escalation](#portefaix-c0006)
+* [PORTEFAIX-C0008 - Container resource constraints must be specified](#portefaix-c0008)
 
 ## low
-* [portefaix-M0001 - Metadata must set recommanded Kubernetes labels](#portefaix-m0001)
-* [portefaix-M0002 - Metadata should have a8r.io annotations](#portefaix-m0002)
-* [portefaix-M0003 - Metadata should have portefaix.xyz annotations](#portefaix-m0003)
+* [PORTEFAIX-M0001 - Metadata must set recommanded Kubernetes labels](#portefaix-m0001)
+* [PORTEFAIX-M0002 - Metadata should have a8r.io annotations](#portefaix-m0002)
+* [PORTEFAIX-M0003 - Metadata should have portefaix.xyz annotations](#portefaix-m0003)
 
 ## high
-* [portefaix-P0002 - Pod must run without access to the host IPC](#portefaix-p0002)
-* [portefaix-P0003 - Pod must run without access to the host networking](#portefaix-p0003)
-* [portefaix-P0004 - Pod must run as non-root](#portefaix-p0004)
-* [portefaix-P0005 - Pod must run without access to the host PID](#portefaix-p0005)
+* [PORTEFAIX-P0002 - Pod must run without access to the host IPC](#portefaix-p0002)
+* [PORTEFAIX-P0003 - Pod must run without access to the host networking](#portefaix-p0003)
+* [PORTEFAIX-P0004 - Pod must run as non-root](#portefaix-p0004)
+* [PORTEFAIX-P0005 - Pod must run without access to the host PID](#portefaix-p0005)
 
 ## portefaix-C0001 - Container must not use latest image tag
 
