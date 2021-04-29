@@ -8,7 +8,6 @@
 * [PORTEFAIX-C0004: Container must mount secrets as volumes, not enviroment variables](#portefaix-c0004-container-must-mount-secrets-as-volumes,-not-enviroment-variables)
 * [PORTEFAIX-C0005: Container must drop all capabilities](#portefaix-c0005-container-must-drop-all-capabilities)
 * [PORTEFAIX-C0006: Container must not allow for privilege escalation](#portefaix-c0006-container-must-not-allow-for-privilege-escalation)
-* [PORTEFAIX-C0007: Container must set readiness probe](#portefaix-c0007-container-must-set-readiness-probe)
 * [PORTEFAIX-C0008: Container must define resource contraintes](#portefaix-c0008-container-must-define-resource-contraintes)
 * [PORTEFAIX-P0001: Pod must run without access to the host aliases](#portefaix-p0001-pod-must-run-without-access-to-the-host-aliases)
 * [PORTEFAIX-P0002: Pod must run without access to the host IPC](#portefaix-p0002-pod-must-run-without-access-to-the-host-ipc)
@@ -18,8 +17,10 @@
 
 ## Warnings
 
+* [PORTEFAIX-C0007: Container must set readiness probe](#portefaix-c0007-container-must-set-readiness-probe)
 * [PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels](#portefaix-m0001-metadata-must-set-recommanded-kubernetes-labels)
 * [PORTEFAIX-M0002: Metadata should have a8r.io annotations](#portefaix-m0002-metadata-should-have-a8r.io-annotations)
+* [PORTEFAIX-M0003: Metadata should have portefaix.xyz annotations](#portefaix-m0003-metadata-should-have-portefaix.xyz-annotations)
 
 ## PORTEFAIX-C0001: Container must not use latest image tag
 
@@ -69,7 +70,7 @@ has_latest_tag(c) {
 }
 ```
 
-_source: [policy/C0001-container-image-tag](policy/C0001-container-image-tag)_
+_source: [opa/C0001-container-image-tag](opa/C0001-container-image-tag)_
 
 ## PORTEFAIX-C0002: Container must set liveness probe
 
@@ -116,7 +117,7 @@ container_liveness_probe_provided(container) {
 }
 ```
 
-_source: [policy/C0002-container-liveness-probe](policy/C0002-container-liveness-probe)_
+_source: [opa/C0002-container-liveness-probe](opa/C0002-container-liveness-probe)_
 
 ## PORTEFAIX-C0003: Container must set readiness probe
 
@@ -164,7 +165,7 @@ container_liveness_probe_provided(container) {
 }
 ```
 
-_source: [policy/C0003-container-readiness-probe](policy/C0003-container-readiness-probe)_
+_source: [opa/C0003-container-readiness-probe](opa/C0003-container-readiness-probe)_
 
 ## PORTEFAIX-C0004: Container must mount secrets as volumes, not enviroment variables
 
@@ -214,7 +215,7 @@ container_mount_secrets(container) {
 }
 ```
 
-_source: [policy/C0004-container-secret-not-env](policy/C0004-container-secret-not-env)_
+_source: [opa/C0004-container-secret-not-env](opa/C0004-container-secret-not-env)_
 
 ## PORTEFAIX-C0005: Container must drop all capabilities
 
@@ -261,7 +262,7 @@ container_dropped_all_capabilities(container) {
 }
 ```
 
-_source: [policy/C0005-container-capabilities](policy/C0005-container-capabilities)_
+_source: [opa/C0005-container-capabilities](opa/C0005-container-capabilities)_
 
 ## PORTEFAIX-C0006: Container must not allow for privilege escalation
 
@@ -311,58 +312,7 @@ container_allows_escalation(c) {
 }
 ```
 
-_source: [policy/C0006-container-escaladation](policy/C0006-container-escaladation)_
-
-## PORTEFAIX-C0007: Container must set readiness probe
-
-**Severity:** Violation
-
-**Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
-
-Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-When Liveness and Readiness probes are pointing to the same endpoint,
-the effects of the probes are combined.
-When the app signals that it's not ready or live,
-the kubelet detaches the container from the Service and delete it at the same time.
-See: https://learnk8s.io/production-best-practices#application-development
-
-### Rego
-
-```rego
-package container_same_probes
-
-import data.lib.core
-import data.lib.pods
-
-policyID := "PORTEFAIX-C0007"
-
-violation[msg] {
-	pods.containers[container]
-	not container_same_probe_provided(container)
-	msg := core.format_with_id(sprintf("%s/%s/%s: Container liveness probe and readiness probe must be different", [core.kind, core.name, container.name]), policyID)
-}
-
-container_same_probe_provided(container) {
-	container.livenessProbe
-	container.readinessProbe
-	container.livenessProbe == container.readinessProbe
-}
-```
-
-_source: [policy/C0007-container-same-probes](policy/C0007-container-same-probes)_
+_source: [opa/C0006-container-escalation](opa/C0006-container-escalation)_
 
 ## PORTEFAIX-C0008: Container must define resource contraintes
 
@@ -413,7 +363,7 @@ container_resources_provided(container) {
 }
 ```
 
-_source: [policy/C0008-container-resources](policy/C0008-container-resources)_
+_source: [opa/C0008-container-resources](opa/C0008-container-resources)_
 
 ## PORTEFAIX-P0001: Pod must run without access to the host aliases
 
@@ -459,7 +409,7 @@ pod_host_alias(pod) {
 }
 ```
 
-_source: [policy/P0001-pod-host-alias](policy/P0001-pod-host-alias)_
+_source: [opa/P0001-pod-host-alias](opa/P0001-pod-host-alias)_
 
 ## PORTEFAIX-P0002: Pod must run without access to the host IPC
 
@@ -505,7 +455,7 @@ pod_host_ipc(pod) {
 }
 ```
 
-_source: [policy/P0002-pod-host-ipc](policy/P0002-pod-host-ipc)_
+_source: [opa/P0002-pod-host-ipc](opa/P0002-pod-host-ipc)_
 
 ## PORTEFAIX-P0003: Pod must run without access to the host networking
 
@@ -552,7 +502,7 @@ pod_host_network(pod) {
 }
 ```
 
-_source: [policy/P0003-pod-host-network](policy/P0003-pod-host-network)_
+_source: [opa/P0003-pod-host-network](opa/P0003-pod-host-network)_
 
 ## PORTEFAIX-P0004: Pod must run as non-root
 
@@ -599,7 +549,7 @@ pod_run_as_non_root(pod) {
 }
 ```
 
-_source: [policy/P0004-pod-without-runasnonroot](policy/P0004-pod-without-runasnonroot)_
+_source: [opa/P0004-pod-without-runasnonroot](opa/P0004-pod-without-runasnonroot)_
 
 ## PORTEFAIX-P0005: Pod must run without access to the host PID namespace
 
@@ -646,7 +596,58 @@ pod_host_pid(pod) {
 }
 ```
 
-_source: [policy/P0005-pod-host-pid](policy/P0005-pod-host-pid)_
+_source: [opa/P0005-pod-host-pid](opa/P0005-pod-host-pid)_
+
+## PORTEFAIX-C0007: Container must set readiness probe
+
+**Severity:** Warning
+
+**Resources:** apps/DaemonSet apps/Deployment apps/StatefulSet core/Pod
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+When Liveness and Readiness probes are pointing to the same endpoint,
+the effects of the probes are combined.
+When the app signals that it's not ready or live,
+the kubelet detaches the container from the Service and delete it at the same time.
+See: https://learnk8s.io/production-best-practices#application-development
+
+### Rego
+
+```rego
+package container_same_probes
+
+import data.lib.core
+import data.lib.pods
+
+policyID := "PORTEFAIX-C0007"
+
+warn[msg] {
+	pods.containers[container]
+	not container_same_probe_provided(container)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container liveness probe and readiness probe must be different", [core.kind, core.name, container.name]), policyID)
+}
+
+container_same_probe_provided(container) {
+	container.livenessProbe
+	container.readinessProbe
+	container.livenessProbe == container.readinessProbe
+}
+```
+
+_source: [opa/C0007-container-same-probes](opa/C0007-container-same-probes)_
 
 ## PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels
 
@@ -694,7 +695,7 @@ recommended_labels_provided(metadata) {
 }
 ```
 
-_source: [policy/M0001-metadata-labels](policy/M0001-metadata-labels)_
+_source: [opa/M0001-metadata-labels](opa/M0001-metadata-labels)_
 
 ## PORTEFAIX-M0002: Metadata should have a8r.io annotations
 
@@ -738,9 +739,49 @@ recommended_annotations_provided(metadata) {
 	metadata.annotations["a8r.io/bugs"]
 	metadata.annotations["a8r.io/documentation"]
 	metadata.annotations["a8r.io/repository"]
-	metadata.annotations["a8r.io/description"]
 	metadata.annotations["a8r.io/support"]
 }
 ```
 
-_source: [policy/M0002-metadata-annotations](policy/M0002-metadata-annotations)_
+_source: [opa/M0002-metadata-annotations](opa/M0002-metadata-annotations)_
+
+## PORTEFAIX-M0003: Metadata should have portefaix.xyz annotations
+
+**Severity:** Warning
+
+**Resources:** Any Resource
+
+Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+### Rego
+
+```rego
+package k8s_annotations_portefaix
+
+import data.lib.core # as konstraint_core
+
+policyID := "PORTEFAIX-M0003"
+
+warn[msg] {
+	not recommended_portefaix_annotations_provided(core.resource.metadata)
+	msg = core.format_with_id(sprintf("%s/%s: should have all the expected portefaix.xyz annotations", [core.kind, core.name]), policyID)
+}
+
+recommended_portefaix_annotations_provided(metadata) {
+	metadata.annotations["portefaix.xyz/version"]
+}
+```
+
+_source: [opa/M0003-metadata-portefaix-annotations](opa/M0003-metadata-portefaix-annotations)_
