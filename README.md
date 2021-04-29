@@ -11,8 +11,8 @@ Policies for Portefaix project using :
 
 ## Documentation
 
-* [OPA policies](https://github.com/nlamirault/portefaix-policies/blob/master/policies.md)
-* **TODO** Kyverno policies
+* [OPA policies](https://github.com/nlamirault/portefaix-policies/blob/master/opa-policies.md)
+* [Kyverno policies](https://github.com/nlamirault/portefaix-policies/blob/master/kyverno-policies.md)
 
 ## Contributing
 
