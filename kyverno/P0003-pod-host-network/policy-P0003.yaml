@@ -15,25 +15,24 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: portefaix-P0005
+  name: portefaix-P0003
   annotations:
-    policies.kyverno.io/title: Pod must run without access to the host PID
+    policies.kyverno.io/title: Pod must run without access to the host networking
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: high
     policies.kyverno.io/description: >-
-      Sharing the host’s PID namespace allows visibility of processes on
-      the host, potentially leaking information such as environment variables
-      and configuration
+      Sharing the host’s network namespace permits processes in the pod to
+      communicate with processes bound to the host’s loopback adapter
 spec:
   validationFailureAction: audit
   rules:
-    - name: validate-host-PID
+    - name: validate-host-network
       match:
         resources:
           kinds:
             - Pod
       validate:
-        message: "Pod must run without access to the host PID"
+        message: "Pod must run without access to the host networking"
         pattern:
           spec:
-            =(hostPID): "false"
+            =(hostNetwork): "false"

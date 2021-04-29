@@ -15,25 +15,38 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: portefaix-P0005
+  name: portefaix-P0004
   annotations:
-    policies.kyverno.io/title: Pod must run without access to the host PID
+    policies.kyverno.io/title: Pod must run as non-root
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: high
     policies.kyverno.io/description: >-
-      Sharing the host’s PID namespace allows visibility of processes on
-      the host, potentially leaking information such as environment variables
-      and configuration
+      Force the running image to run as a non-root user to ensure least
+      privilege
 spec:
   validationFailureAction: audit
   rules:
-    - name: validate-host-PID
+    - name: pod-run-as-non-root
       match:
         resources:
           kinds:
             - Pod
       validate:
-        message: "Pod must run without access to the host PID"
-        pattern:
-          spec:
-            =(hostPID): "false"
+        message: "Pod must run as non-root"
+        anyPattern:
+          - spec:
+              securityContext:
+                runAsNonRoot: true
+              containers:
+              - =(securityContext):
+                  =(runAsNonRoot): true
+              =(initContainers):
+              - =(securityContext):
+                  =(runAsNonRoot): true
+          - spec:
+              containers:
+              - securityContext:
+                  runAsNonRoot: true
+              =(initContainers):
+              - securityContext:
+                  runAsNonRoot: true
