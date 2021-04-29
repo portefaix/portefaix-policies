@@ -7,12 +7,18 @@
 * [portefaix-C0004 - Container must mount secrets as volumes, not enviroment variables](#portefaix-c0004)
 * [portefaix-C0005 - Container must drop all capabilities](#portefaix-c0005)
 * [portefaix-C0006 - Container must not allow for privilege escalation](#portefaix-c0006)
-* [portefaix-C0007 - portefaix-C0007](#portefaix-c0007)
+* [portefaix-C0008 - Container resource constraints must be specified](#portefaix-c0008)
 
 ## low
 * [portefaix-M0001 - Metadata must set recommanded Kubernetes labels](#portefaix-m0001)
 * [portefaix-M0002 - Metadata should have a8r.io annotations](#portefaix-m0002)
 * [portefaix-M0003 - Metadata should have portefaix.xyz annotations](#portefaix-m0003)
+
+## high
+* [portefaix-P0002 - Pod must run without access to the host IPC](#portefaix-p0002)
+* [portefaix-P0003 - Pod must run without access to the host networking](#portefaix-p0003)
+* [portefaix-P0004 - Pod must run as non-root](#portefaix-p0004)
+* [portefaix-P0005 - Pod must run without access to the host PID](#portefaix-p0005)
 
 ## portefaix-C0001 - Container must not use latest image tag
 
@@ -62,13 +68,13 @@
 
 **Description:** Privilege escalation, such as via set-user-ID or set-group-ID file mode, should not be allowed.
 
-## portefaix-C0007 - portefaix-C0007
+## portefaix-C0008 - Container resource constraints must be specified
 
 **Category:** BestPractices
 
 **Severity:** medium
 
-**Description:** Check that liveness and readiness probes are not set to the same values.
+**Description:** It is important to limit resources requested and consumed by each pod.
 
 ## portefaix-M0001 - Metadata must set recommanded Kubernetes labels
 
@@ -93,3 +99,35 @@
 **Severity:** low
 
 **Description:** Metadata should have Portefaix annotations
+
+## portefaix-P0002 - Pod must run without access to the host IPC
+
+**Category:** Best Practices
+
+**Severity:** high
+
+**Description:** Pods that are allowed to access the host IPC can read memory of the other containers, breaking that security boundary.
+
+## portefaix-P0003 - Pod must run without access to the host networking
+
+**Category:** Best Practices
+
+**Severity:** high
+
+**Description:** Sharing the host’s network namespace permits processes in the pod to communicate with processes bound to the host’s loopback adapter
+
+## portefaix-P0004 - Pod must run as non-root
+
+**Category:** Best Practices
+
+**Severity:** high
+
+**Description:** Force the running image to run as a non-root user to ensure least privilege
+
+## portefaix-P0005 - Pod must run without access to the host PID
+
+**Category:** Best Practices
+
+**Severity:** high
+
+**Description:** Sharing the host’s PID namespace allows visibility of processes on the host, potentially leaking information such as environment variables and configuration
