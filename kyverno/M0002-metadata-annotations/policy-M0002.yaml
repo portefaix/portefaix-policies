@@ -17,9 +17,9 @@ kind: ClusterPolicy
 metadata:
   name: portefaix-M0002
   annotations:
-    policies.kyverno.io/title: portefaix-M0002
+    policies.kyverno.io/title: Metadata should have a8r.io annotations
     policies.kyverno.io/category: Best Practices
-    policies.kyverno.io/severity: medium
+    policies.kyverno.io/severity: low
     policies.kyverno.io/description: >-
       Metadata should have all the expected a8r.io annotations
       See: https://ambassadorlabs.github.io/k8s-for-humans/

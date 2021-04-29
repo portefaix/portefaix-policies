@@ -15,29 +15,24 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: portefaix-M0001
+  name: portefaix-P0002
   annotations:
-    policies.kyverno.io/title: Metadata must set recommanded Kubernetes labels
+    policies.kyverno.io/title: Pod must run without access to the host IPC
     policies.kyverno.io/category: Best Practices
-    policies.kyverno.io/severity: low
+    policies.kyverno.io/severity: high
     policies.kyverno.io/description: >-
-      Metadata must set recommanded Kubernetes labels
-      See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
+      Pods that are allowed to access the host IPC can read memory of
+      the other containers, breaking that security boundary.
 spec:
   validationFailureAction: audit
   rules:
-  - name: check-for-recommanded-kubernetes-labels
-    match:
-      resources:
-        kinds:
-        - Pod
-    validate:
-      message: "Kubernetes recommanded labels is required."
-      pattern:
-        metadata:
-          labels:
-            app.kubernetes.io/name: "?*"
-            app.kubernetes.io/instance: "?*"
-            app.kubernetes.io/component: "?*"
-            app.kubernetes.io/part-of: "?*"
-            app.kubernetes.io/managed-by: "?*"
+    - name: validate-host-IPC
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Pod must run without access to the host IPC"
+        pattern:
+          spec:
+            =(hostIPC): "false"

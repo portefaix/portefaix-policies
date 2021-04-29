@@ -17,9 +17,9 @@ kind: ClusterPolicy
 metadata:
   name: portefaix-M0003
   annotations:
-    policies.kyverno.io/title: portefaix-M0003
+    policies.kyverno.io/title: Metadata should have portefaix.xyz annotations
     policies.kyverno.io/category: Best Practices
-    policies.kyverno.io/severity: medium
+    policies.kyverno.io/severity: low
     policies.kyverno.io/description: >-
       Metadata should have Portefaix annotations
 spec:
