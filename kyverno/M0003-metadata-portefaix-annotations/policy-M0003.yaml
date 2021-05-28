@@ -21,7 +21,9 @@ metadata:
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: low
     policies.kyverno.io/description: >-
-      Metadata should have Portefaix annotations
+      Metadata should have Portefaix annotations:
+      Annotations are:
+        - portefaix.xyz/version
 spec:
   validationFailureAction: audit
   rules:
