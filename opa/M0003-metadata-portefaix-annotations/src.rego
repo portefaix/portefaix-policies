@@ -14,7 +14,8 @@
 
 # @title Metadata should have portefaix.xyz annotations
 #
-#
+# Annotations are:
+# - portefaix.xyz/version
 
 package k8s_annotations_portefaix
 
