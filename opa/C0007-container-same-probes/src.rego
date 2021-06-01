@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# @title Container must set readiness probe
+# @title Container liveness probe and readiness probe should be different
 #
 # When Liveness and Readiness probes are pointing to the same endpoint,
 # the effects of the probes are combined.
@@ -33,7 +33,7 @@ policyID := "PORTEFAIX-C0007"
 warn[msg] {
 	pods.containers[container]
 	not container_same_probe_provided(container)
-	msg := core.format_with_id(sprintf("%s/%s/%s: Container liveness probe and readiness probe must be different", [core.kind, core.name, container.name]), policyID)
+	msg := core.format_with_id(sprintf("%s/%s/%s: Container liveness probe and readiness probe should be different", [core.kind, core.name, container.name]), policyID)
 }
 
 container_same_probe_provided(container) {

@@ -17,8 +17,8 @@
 
 ## Warnings
 
-* [PORTEFAIX-C0007: Container must set readiness probe](#portefaix-c0007-container-must-set-readiness-probe)
-* [PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels](#portefaix-m0001-metadata-must-set-recommanded-kubernetes-labels)
+* [PORTEFAIX-C0007: Container liveness probe and readiness probe should be different](#portefaix-c0007-container-liveness-probe-and-readiness-probe-should-be-different)
+* [PORTEFAIX-M0001: Metadata should contain all recommanded Kubernetes labels](#portefaix-m0001-metadata-should-contain-all-recommanded-kubernetes-labels)
 * [PORTEFAIX-M0002: Metadata should have a8r.io annotations](#portefaix-m0002-metadata-should-have-a8r.io-annotations)
 * [PORTEFAIX-M0003: Metadata should have portefaix.xyz annotations](#portefaix-m0003-metadata-should-have-portefaix.xyz-annotations)
 
@@ -173,7 +173,7 @@ boundary.
 
 _source: [opa/P0005-pod-host-pid](opa/P0005-pod-host-pid)_
 
-## PORTEFAIX-C0007: Container must set readiness probe
+## PORTEFAIX-C0007: Container liveness probe and readiness probe should be different
 
 **Severity:** Warning
 
@@ -188,7 +188,7 @@ See: https://learnk8s.io/production-best-practices#application-development
 
 _source: [opa/C0007-container-same-probes](opa/C0007-container-same-probes)_
 
-## PORTEFAIX-M0001: Metadata must set recommanded Kubernetes labels
+## PORTEFAIX-M0001: Metadata should contain all recommanded Kubernetes labels
 
 **Severity:** Warning
 
