@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# @title Metadata must set recommanded Kubernetes labels
+# @title Metadata should contain all recommanded Kubernetes labels
 #
 # See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
 
