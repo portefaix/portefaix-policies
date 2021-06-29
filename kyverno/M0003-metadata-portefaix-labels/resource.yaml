@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: myapp-pod-ok
-  annotations:
+  labels:
     portefaix.xyz/version: v1.0.0
 spec:
   containers:

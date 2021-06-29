@@ -12,17 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: check-for-portefaix.xyz-annotations
+name: check-for-portefaix.xyz-labels
 policies:
   -  policy-M0003.yaml
 resources:
   -  resource.yaml
 results:
   - policy: portefaix-M0003
-    rule: check-for-portefaix.xyz-annotations
+    rule: check-for-portefaix.xyz-labels
     resource: myapp-pod-ko
     status: fail
   - policy: portefaix-M0003
-    rule: check-for-portefaix.xyz-annotations
+    rule: check-for-portefaix.xyz-labels
     resource: myapp-pod-ok
     status: pass
