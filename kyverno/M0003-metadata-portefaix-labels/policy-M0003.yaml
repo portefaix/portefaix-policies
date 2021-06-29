@@ -20,6 +20,7 @@ metadata:
     policies.kyverno.io/title: Metadata should have portefaix.xyz labels
     policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: low
+    policies.kyverno.io/subject: Metadata
     policies.kyverno.io/description: >-
       Metadata should have Portefaix labels:
       Labels are:
