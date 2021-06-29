@@ -1,6 +1,7 @@
 # Policies
 
 ## medium
+
 * [PORTEFAIX-C0001 - Container must not use latest image tag](#portefaix-c0001)
 * [PORTEFAIX-C0002 - Container must set liveness probe](#portefaix-c0002)
 * [PORTEFAIX-C0003 - Container must set readiness probe](#portefaix-c0003)
@@ -10,11 +11,13 @@
 * [PORTEFAIX-C0008 - Container resource constraints must be specified](#portefaix-c0008)
 
 ## low
+
 * [PORTEFAIX-M0001 - Metadata must set recommanded Kubernetes labels](#portefaix-m0001)
 * [PORTEFAIX-M0002 - Metadata should have a8r.io annotations](#portefaix-m0002)
 * [PORTEFAIX-M0003 - Metadata should have portefaix.xyz annotations](#portefaix-m0003)
 
 ## high
+
 * [PORTEFAIX-P0002 - Pod must run without access to the host IPC](#portefaix-p0002)
 * [PORTEFAIX-P0003 - Pod must run without access to the host networking](#portefaix-p0003)
 * [PORTEFAIX-P0004 - Pod must run as non-root](#portefaix-p0004)
@@ -124,10 +127,10 @@
 
 **Description:** Metadata should have all the expected a8r.io annotations See: https://ambassadorlabs.github.io/k8s-for-humans/
 
-## PORTEFAIX-M0003 - Metadata should have portefaix.xyz annotations
+## PORTEFAIX-M0003 - Metadata should have portefaix.xyz labels
 
 **Category:** Best Practices
 
 **Severity:** low
 
-**Description:** Metadata should have Portefaix annotations
+**Description:** Metadata should have Portefaix labels
