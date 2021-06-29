@@ -48,5 +48,21 @@
       "updateTypes": ["patch"],
       "labels": ["area/renovate", "dependency/terraform", "priority/low", "size/xs"]
     },
+    // Labels for Github Actions
+    {
+      "datasources": ["action"],
+      "updateTypes": ["major"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/high", "size/xs"]
+    },
+    {
+      "datasources": ["action"],
+      "updateTypes": ["minor"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/medium", "size/xs"]
+    },
+    {
+      "datasources": ["action"],
+      "updateTypes": ["patch"],
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/low", "size/xs"]
+    },
   ]
 }
