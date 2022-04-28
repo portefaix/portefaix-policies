@@ -12,21 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: validate-host-IPC
+name: test-portefaix-N0001
 policies:
-  -  policy-P0002.yaml
+  -  policy-N0001.yaml
 resources:
   -  resource.yaml
 results:
-  - policy: portefaix-P0002
-    rule: validate-host-IPC
-    resource: myapp-pod-ok-1
-    status: pass
-  - policy: portefaix-P0002
-    rule: validate-host-IPC
-    resource: myapp-pod-ok-2
-    status: pass
-  - policy: portefaix-P0002
-    rule: validate-host-IPC
-    resource: myapp-pod-ko
-    status: fail
+  # validate-namespace
+  - policy: disallow-default-namespace
+    rule: validate-namespace
+    resource: badpod01
+    kind: Pod
+    result: fail
+  - policy: disallow-default-namespace
+    rule: validate-namespace
+    resource: goodpod01
+    kind: Pod
+    result: pass
+  # validate-podcontroller-namespace
+  - policy: disallow-default-namespace
+    rule: validate-podcontroller-namespace
+    resource: baddeployment01
+    kind: Deployment
+    result: fail
+  - policy: disallow-default-namespace
+    rule: validate-podcontroller-namespace
+    resource: gooddeployment01
+    kind: Deployment
+    result: pass
