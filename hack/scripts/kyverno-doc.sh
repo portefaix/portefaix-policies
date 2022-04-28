@@ -49,7 +49,7 @@ function policy_doc() {
             title=$(yq '.metadata.annotations["policies.kyverno.io/title"]' < "${POLICIES_DIR}/${policy}/${file}")
             severity=$(yq '.metadata.annotations["policies.kyverno.io/severity"]' < "${POLICIES_DIR}/${policy}/${file}")
             # description=$(yq '.metadata.annotations["policies.kyverno.io/title"]' < "${POLICIES_DIR}/${policy}/${file}")
-            echo "* [${name} - ${title}](#${POLICIES_DIR}/${policy}) **${severity}**" >> ${tmpfile}
+            echo "| [${name} - ${title}](#${POLICIES_DIR}/${policy}) | **${severity}** |" >> ${tmpfile}
         fi
     done
     # jsonnetfile="${MIXINS_DIR}/${mixin}/jsonnetfile.json"
@@ -84,6 +84,8 @@ while read LINE; do
     elif [ "${LINE}" == "${STARTFLAG}" ]; then
             START="true"
             echo "${STARTFLAG}" >> "${tmpfile}"
+            echo "| Policy | Severity |" >> ${tmpfile}
+            echo "|--------|:--------:|" >> ${tmpfile}
             continue
     else
         echo "${LINE}" >> "${tmpfile}"
