@@ -21,16 +21,20 @@ results:
   - policy: portefaix-C0006
     rule: deny-privilege-escalation
     resource: myapp-pod-ko-1
+    kind: Pod
     status: fail
   - policy: portefaix-C0006
     rule: deny-privilege-escalation
     resource: myapp-pod-ko-2
+    kind: Pod
     status: fail
   - policy: portefaix-C0006
     rule: deny-privilege-escalation
     resource: myapp-pod-ok-1
+    kind: Pod
     status: pass
   - policy: portefaix-C0006
     rule: deny-privilege-escalation
     resource: myapp-pod-ok-2
+    kind: Pod
     status: pass

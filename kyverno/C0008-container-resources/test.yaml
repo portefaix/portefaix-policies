@@ -21,16 +21,20 @@ results:
   - policy: portefaix-C0008
     rule: check-container-resources
     resource: myapp-pod-ko-1
+    kind: Pod
     status: fail
   - policy: portefaix-C0008
     rule: check-container-resources
     resource: myapp-pod-ko-2
+    kind: Pod
     status: fail
   - policy: portefaix-C0008
     rule: check-container-resources
     resource: myapp-pod-ko-3
+    kind: Pod
     status: fail
   - policy: portefaix-C0008
     rule: check-container-resources
     resource: myapp-pod-ok
+    kind: Pod
     status: pass
