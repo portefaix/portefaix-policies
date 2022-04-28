@@ -12,5 +12,5 @@
 | [portefaix-M0001 - Metadata must set recommanded Kubernetes labels](kyverno/M0001-metadata-labels) | **low** |
 | [portefaix-M0002 - Metadata should have a8r.io annotations](kyverno/M0002-metadata-annotations) | **low** |
 | [portefaix-M0003 - Metadata should have portefaix.xyz labels](kyverno/M0003-metadata-portefaix-labels) | **low** |
-| [portefaix-N0001 - Container must not use latest image tag](kyverno/N0001-namespace-default) | **medium** |
+| [portefaix-N0001 - Disallow Default Namespace](kyverno/N0001-namespace-default) | **medium** |
 <!-- END_POLICIES_DOC -->
