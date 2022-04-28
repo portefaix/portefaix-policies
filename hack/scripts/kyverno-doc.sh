@@ -48,26 +48,9 @@ function policy_doc() {
             name=$(yq '.metadata.name' < "${POLICIES_DIR}/${policy}/${file}")
             title=$(yq '.metadata.annotations["policies.kyverno.io/title"]' < "${POLICIES_DIR}/${policy}/${file}")
             severity=$(yq '.metadata.annotations["policies.kyverno.io/severity"]' < "${POLICIES_DIR}/${policy}/${file}")
-            # description=$(yq '.metadata.annotations["policies.kyverno.io/title"]' < "${POLICIES_DIR}/${policy}/${file}")
-            echo "| [${name} - ${title}](${POLICIES_DIR}/${policy}) | **${severity}** |" >> ${tmpfile}
+            echo "| [${name} - ${title}](${POLICIES_DIR}/${policy}) | \`${severity}\` |" >> ${tmpfile}
         fi
     done
-    # jsonnetfile="${MIXINS_DIR}/${mixin}/jsonnetfile.json"
-    # if [ ! -f "${jsonnetfile}" ]; then
-    #     echo -e "${KO_COLOR}[monitoring-mixins] Jsonnet not found: ${jsonnetfile} ${NO_COLOR}"
-    # else
-    #     echo -e "${INFO_COLOR}[monitoring-mixins] ${mixin} ${NO_COLOR}"
-    #     deps=$(jq '.dependencies[] | "\(.source.git.remote) \(.version)"' ${jsonnetfile} | tr '\n' ';')
-    #     IFS=';'
-    #     read -ra data <<< "${deps}"
-    #     echo -n "| ${mixin} | " >> ${tmpfile}
-    #     for i in "${data[@]}"; do
-    #         git=$(echo ${i} | sed -e 's/"//g' | awk -F" " '{ print $1 }')
-    #         version=$(echo ${i} | sed -e 's/"//g' | awk -F" " '{ print $2 }')
-    #         echo -n "${git} - \`${version}\` <br> " >> ${tmpfile}
-    #     done
-    #     echo "|" >> ${tmpfile}
-    # fi
 }
 
 echo_info "[kyverno-policies] Extract documentation"
