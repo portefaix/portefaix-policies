@@ -21,8 +21,10 @@ results:
   - policy: portefaix-C0002
     rule: validate-liveness-probe
     resource: myapp-pod-ok
+    kind: Pod
     status: pass
   - policy: portefaix-C0002
     rule: validate-liveness-probe
     resource: myapp-pod-ko
+    kind: Pod
     status: fail

@@ -21,8 +21,10 @@ results:
   - policy: portefaix-M0003
     rule: check-for-portefaix.xyz-labels
     resource: myapp-pod-ko
+    kind: Pod
     status: fail
   - policy: portefaix-M0003
     rule: check-for-portefaix.xyz-labels
     resource: myapp-pod-ok
+    kind: Pod
     status: pass
