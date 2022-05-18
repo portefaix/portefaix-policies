@@ -6,9 +6,11 @@ metadata:
   labels:
     app.kubernetes.io/name: "kyverno-policies"
     app.kubernetes.io/instance: "kyverno-policies"
+    app.kubernetes.io/version: v1.0.0
     app.kubernetes.io/component: "kyverno"
     app.kubernetes.io/part-of: "kyverno-policies"
     app.kubernetes.io/managed-by: "kubectl"
+
 spec:
   containers:
   - name: nginx
