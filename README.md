@@ -8,11 +8,13 @@ Policies for Portefaix project using :
 
 * [Open Policy Agent](https://www.openpolicyagent.org/)
 * [Kyverno](https://kyverno.io/)
+* [Kubewarden](https://www.kubewarden.io/)
 
 ## Documentation
 
 * [OPA policies](https://github.com/nlamirault/portefaix-policies/blob/master/opa-policies.md)
 * [Kyverno policies](https://github.com/nlamirault/portefaix-policies/blob/master/kyverno-policies.md)
+* [Kubewarden policies](https://github.com/nlamirault/portefaix-policies/blob/master/kubewarden-policies.md)
 
 ## Contributing
 
