@@ -39,7 +39,6 @@ spec:
           containers:
           - resources:
               limits:
-                cpu: "?*"
                 memory: "?*"
               requests:
                 cpu: "?*"
