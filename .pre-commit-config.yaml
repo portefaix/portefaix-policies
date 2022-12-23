@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,12 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
 
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.4.0
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
@@ -26,19 +28,14 @@ repos:
         exclude: mkdocs.yml
     -   id: check-added-large-files
 -   repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.10
+    rev: v1.3.1
     hooks:
-    # Cf: https://github.com/kyverno/kyverno/issues/1845
-    # -   id: insert-license
-    #     files: \.yaml
-    #     args:
-    #     - --license-filepath
-    #     - hack/config/licence.txt
     -   id: insert-license
-        files: \.rego
+        files:  (Makefile|\.mk|\.yaml|\.yml|\.rego|\.toml|\.sh)
         args:
         - --license-filepath
-        - hack/config/licence.txt
+        - LICENSE
+        # - --remove-header
 - repo: https://github.com/anderseknert/pre-commit-opa
   rev: v1.5.0
   hooks:
