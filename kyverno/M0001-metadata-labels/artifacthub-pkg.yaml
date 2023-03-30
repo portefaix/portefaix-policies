@@ -14,30 +14,26 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-version: 0.4.0
-name: portefaix-rego-policies
-displayName: Rego policies for Portefaix
-description: Rego policies collection from Portefaix
+---
+version: 0.1.0
+name: portefaix-M0001
+displayName: portefaix-M0001
+description: Metadata must set recommanded Kubernetes labels
 license: Apache-2.0
-homeURL: https://github.com/portefaix/portefaix-policies
+homeURL: https://github.com/portefaix/portefaix-policies/
 createdAt: 2021-06-11T18:00:00Z
 keywords:
   - kubernetes
   - policies
-  - opa
-  - gatekeeper
-  - conftest
+  - kyverno
 links:
   - name: source
-    url: https://github.com/portefaix/portefaix-policies/tree/master/opa
+    url: https://github.com/portefaix/portefaix-policies/tree/master/kyverno/M0001-metadata-labels
 readme: |
-  # rego-policies
-  [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) policies collection.
+  # kyverno-policies
 
   ## Policies
-  For a full list of policies, see the auto-generated [POLICIES.md](https://github.com/portefaix/portefaix-policies/tree/master/opa-policies.md)
-
-  The naming of the policies follows the Gatekeeper format, as described [here.](https://github.com/plexsystems/konstraint#how-template-and-constraint-naming-works)
+  For a full list of policies, see the auto-generated [POLICIES.md](https://github.com/portefaix/portefaix-policies/tree/master/kyverno-policies.md)
 maintainers:
   - name: Nicolas Lamirault
     email: nicolas.lamirault@gmail.com

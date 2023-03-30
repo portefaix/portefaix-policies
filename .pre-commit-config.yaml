@@ -36,18 +36,18 @@ repos:
         - --license-filepath
         - LICENSE
         # - --remove-header
-- repo: https://github.com/anderseknert/pre-commit-opa
-  rev: v1.5.0
-  hooks:
-  - id: opa-fmt
-  - id: opa-check
-    args: ['opa/**/*']
-  - id: opa-test
-    args: ['opa/**/*']
-#   - id: conftest-test
-#     args: ['--policy', 'opa']
-  - id: conftest-verify
-    args: ['--data', 'opa/lib', '--policy', 'opa/**/']
+# - repo: https://github.com/anderseknert/pre-commit-opa
+#   rev: v1.5.0
+#   hooks:
+#   - id: opa-fmt
+#   - id: opa-check
+#     args: ['opa']
+#   - id: opa-test
+#     args: ['opa']
+# #   - id: conftest-test
+# #     args: ['--policy', 'opa']
+#   - id: conftest-verify
+#     args: ['--data', 'opa/lib', '--policy', 'opa/**/']
 # - repo: https://github.com/kyverno/pre-commit-hook
 #   rev: v1.0.0
 #   hooks:

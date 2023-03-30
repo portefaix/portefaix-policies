@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# @title Container must define resource contraintes
+# @title Container must define resource contraints
 #
 # Resource constraints on containers ensure that a given workload does not take up more resources than it requires
 # and potentially starve other applications that need to run.
