@@ -47,7 +47,7 @@ repos:
 #   - id: conftest-test
 #     args: ['--policy', 'opa']
   - id: conftest-verify
-    args: ['--data', 'opa/lib', '--policy', 'opa']
+    args: ['--data', 'opa/lib', '--policy', 'opa/**/']
 # - repo: https://github.com/kyverno/pre-commit-hook
 #   rev: v1.0.0
 #   hooks:
