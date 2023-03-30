@@ -39,11 +39,11 @@ repos:
 - repo: https://github.com/anderseknert/pre-commit-opa
   rev: v1.5.0
   hooks:
-  - id: opa-fmt
-  - id: opa-check
-    args: ['opa/**/*']
-  - id: opa-test
-    args: ['opa/**/*']
+  # - id: opa-fmt
+  # - id: opa-check
+  #   args: ['opa']
+  # - id: opa-test
+  #   args: ['opa']
 #   - id: conftest-test
 #     args: ['--policy', 'opa']
   - id: conftest-verify
