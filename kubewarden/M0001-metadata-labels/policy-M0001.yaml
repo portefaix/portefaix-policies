@@ -24,7 +24,26 @@ spec:
   rules:
     - apiGroups: [""]
       apiVersions: ["v1"]
-      resources: ["pods"]
+      resources:
+      - "ConfigMap"
+      - "Secret"
+      - "Pod"
+      - "Deployment"
+      - "DaemonSet"
+      - "StatefulSet"
+      - "Service"
+      - "Job"
+      - "CronJob"
+      - "Role"
+      - "RoleBinding"
+      - "ClusterRole"
+      - "ClusterRoleBinding"
+      - "ServiceAccount"
+      - "Ingress"
+      - "IngressClass"
+      - "NetworkPolicy"
+      - "PodDisruptionBudget"
+      - "StorageClass"
       operations:
       - CREATE
       - UPDATE

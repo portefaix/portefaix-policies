@@ -20,23 +20,41 @@ kind: ClusterAdmissionPolicy
 metadata:
   name: portefaix-M0002
 spec:
-  module: registry://ghcr.io/kubewarden/policies/safe-annotations:v0.1.1
+  module: registry://ghcr.io/kubewarden/policies/safe-annotations:v0.2.2
   rules:
     - apiGroups: [""]
       apiVersions: ["v1"]
-      resources: ["pods"]
+      resources:
+      - "ConfigMap"
+      - "Secret"
+      - "Pod"
+      - "Deployment"
+      - "DaemonSet"
+      - "StatefulSet"
+      - "Service"
+      - "Job"
+      - "CronJob"
+      - "Role"
+      - "RoleBinding"
+      - "ClusterRole"
+      - "ClusterRoleBinding"
+      - "ServiceAccount"
+      - "Ingress"
+      - "IngressClass"
+      - "NetworkPolicy"
+      - "PodDisruptionBudget"
+      - "StorageClass"
       operations:
       - CREATE
       - UPDATE
   mutating: false
   settings:
     denied_annotations: []
-    # TODO: https://github.com/kubewarden/safe-annotations-policy/issues/1
-    # mandatory_annotations:
-    # - a8r.io/description
-    # - a8r.io/owner
-    # - a8r.io/bugs
-    # - a8r.io/documentation
-    # - a8r.io/repository
-    # - a8r.io/support
+    mandatory_annotations:
+    - a8r.io/description
+    - a8r.io/owner
+    - a8r.io/bugs
+    - a8r.io/documentation
+    - a8r.io/repository
+    - a8r.io/support
     constrained_annotations: []
