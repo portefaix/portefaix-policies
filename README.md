@@ -6,6 +6,7 @@
 
 Policies for Portefaix project using :
 
+* [Kubernetes Validating Admission Policies](https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/)
 * [Open Policy Agent](https://www.openpolicyagent.org/)
 * [Kyverno](https://kyverno.io/)
 * [Kubewarden](https://www.kubewarden.io/)
@@ -15,6 +16,7 @@ Policies for Portefaix project using :
 * [OPA policies](https://github.com/nlamirault/portefaix-policies/blob/master/opa-policies.md)
 * [Kyverno policies](https://github.com/nlamirault/portefaix-policies/blob/master/kyverno-policies.md)
 * [Kubewarden policies](https://github.com/nlamirault/portefaix-policies/blob/master/kubewarden-policies.md)
+* [Kubernetes Validating Admission Policies](https://github.com/nlamirault/portefaix-policies/blob/master/cel.md)
 
 ## Contributing
 
