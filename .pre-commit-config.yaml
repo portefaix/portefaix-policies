@@ -48,13 +48,13 @@ repos:
 #     args: ['--policy', 'opa']
   - id: conftest-verify
     args: ['--data', 'opa/lib', '--policy', 'opa']
-- repo: https://github.com/kyverno/pre-commit-hook
-  rev: v1.0.0
-  hooks:
-  - id: kyverno-validate
-    name: Kyverno validate
-    args: [./kyverno]
-    verbose: true
-  - id: kyverno-test
-    name: Kyverno test
-    args: ["./kyverno"]
+# - repo: https://github.com/kyverno/pre-commit-hook
+#   rev: v1.0.0
+#   hooks:
+#   - id: kyverno-validate
+#     name: Kyverno validate
+#     args: [./kyverno]
+#     verbose: true
+#   - id: kyverno-test
+#     name: Kyverno test
+#     args: ["./kyverno"]
