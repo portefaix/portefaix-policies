@@ -20,7 +20,7 @@ metadata:
   name: portefaix-C0003
   annotations:
     policies.kyverno.io/title: Container must set readiness probe
-    policies.kyverno.io/category: Portefaix
+    policies.kyverno.io/category: Best Practices
     policies.kyverno.io/severity: high
     policies.kyverno.io/subject: Container
     policies.kyverno.io/description: >-
