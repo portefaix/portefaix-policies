@@ -18,7 +18,7 @@
 apiVersion: admissionregistration.k8s.io/v1alpha1
 kind: ValidatingAdmissionPolicy
 metadata:
-  name: portefaix-M0002
+  name: portefaix-N0001
 spec:
   failurePolicy: Fail
   matchConstraints:
@@ -26,25 +26,15 @@ spec:
     - apiGroups:   [""]
       apiVersions: ["v1"]
       operations:  ["CREATE", "UPDATE"]
-      resources:   ["services"]
-    # - apiGroups:   [""]
-    #   apiVersions: ["v1"]
-    #   operations:  ["CREATE", "UPDATE"]
-    #   resources:   ["pods"]
-    # - apiGroups:   ["apps"]
-    #   apiVersions: ["v1"]
-    #   operations:  ["CREATE", "UPDATE"]
-    #   resources:   ["deployments","replicasets","daemonsets","statefulsets"]
-    # - apiGroups:   ["batch"]
-    #   apiVersions: ["v1"]
-    #   operations:  ["CREATE", "UPDATE"]
-    #   resources:   ["jobs","cronjobs"]
+      resources:   ["pods"]
+    - apiGroups:   ["apps"]
+      apiVersions: ["v1"]
+      operations:  ["CREATE", "UPDATE"]
+      resources:   ["deployments","replicasets","daemonsets","statefulsets"]
+    - apiGroups:   ["batch"]
+      apiVersions: ["v1"]
+      operations:  ["CREATE", "UPDATE"]
+      resources:   ["jobs","cronjobs"]
   validations:
-  - expression: >
-      'a8r.io/description' in object.metadata.labels &&
-      'a8r.io/owner' in object.metadata.labels &&
-      'a8r.io/bugs' in object.metadata.labels &&
-      'a8r.io/documentation' in object.metadata.labels &&
-      'a8r.io/repository' in object.metadata.labels &&
-      'a8r.io/support' in object.metadata.labels
-    message: "a8r.io annotations is required."
+    - expression: "['Pod','Deployment','ReplicaSet','DaemonSet','StatefulSet','Job', 'CronJob'].all(kind, object.kind != kind) || (has(object.metadata.namespace) && object.metadata.namespace != 'default')"
+      message: "Workloads in default namespace are not allowed"
