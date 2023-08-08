@@ -13,15 +13,15 @@ Policies for Portefaix project using :
 
 | Policy | Kyverno | OPA | Kubewarden | Validating admission policies |
 |--------|:-------:|:---:|:----------:|:-----------------------------:|
-| `portefaix-C0001 - Container must not use latest image tag` | :white_check_mark: | :white_check_mark: |  | :white_check_mark: |
-| `portefaix-C0002 - Container must set liveness probe` | :white_check_mark: | :white_check_mark: |  | :white_check_mark: |
-| `portefaix-C0003 - Container must set readiness probe` | :white_check_mark: | :white_check_mark: |  | :white_check_mark: |
-| `portefaix-C0004 - Container must mount secrets as volumes, not enviroment variables` | :white_check_mark: | :white_check_mark: |  |  |
-| `portefaix-C0008 - Container resource constraints must be specified` | :white_check_mark: | :white_check_mark: |  | :white_check_mark: |
+| `portefaix-C0001 - Container must not use latest image tag` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
+| `portefaix-C0002 - Container must set liveness probe` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
+| `portefaix-C0003 - Container must set readiness probe` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
+| `portefaix-C0004 - Container must mount secrets as volumes, not enviroment variables` | :white_check_mark: | :white_check_mark: | :x: | :x: |
+| `portefaix-C0008 - Container resource constraints must be specified` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
 | `portefaix-M0001 - Metadata must set recommanded Kubernetes labels` | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `portefaix-M0002 - Metadata should have a8r.io annotations` | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| `portefaix-M0003 - Metadata should have portefaix.xyz labels` | :white_check_mark: | :white_check_mark: |  | :white_check_mark: |
-| `portefaix-N0001 - Disallow Default Namespace` | :white_check_mark: |  |  | :white_check_mark: |
+| `portefaix-M0003 - Metadata should have portefaix.xyz labels` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
+| `portefaix-N0001 - Disallow Default Namespace` | :white_check_mark: | :x: | :x: | :white_check_mark: |
 
 ## Documentation
 
