@@ -19,15 +19,32 @@ apiVersion: policies.kubewarden.io/v1
 kind: ClusterAdmissionPolicy
 metadata:
   name: portefaix-M0002
+  annotations:
+    io.kubewarden.policy.title: Metadata should have a8r.io annotations
+    io.kubewarden.policy.category: Portefaix
+    io.kubewarden.policy.severity: low
+    io.kubewarden.policy.description: >-
+      Metadata should have all the expected a8r.io annotations
+      See: https://ambassadorlabs.github.io/k8s-for-humans/
 spec:
   module: registry://ghcr.io/kubewarden/policies/safe-annotations:v0.2.9
   rules:
     - apiGroups: [""]
       apiVersions: ["v1"]
-      resources: ["services"]
+      resources: ["pods"]
       operations:
       - CREATE
       - UPDATE
+    - apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      resources: ["deployments","replicasets","daemonsets","statefulsets"]
+      operations:
+      - CREATE
+      - UPDATE
+    - apiGroups:   ["batch"]
+      apiVersions: ["v1"]
+      operations:  ["CREATE", "UPDATE"]
+      resources:   ["jobs","cronjobs"]
   mutating: false
   settings:
     denied_annotations: []

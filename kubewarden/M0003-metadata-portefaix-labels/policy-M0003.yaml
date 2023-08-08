@@ -18,14 +18,16 @@
 apiVersion: policies.kubewarden.io/v1
 kind: ClusterAdmissionPolicy
 metadata:
-  name: portefaix-M0001
-  annotations:
-    io.kubewarden.policy.title: Metadata should have portefaix.xyz labels
-    io.kubewarden.policy.category: Resource validation
-    io.kubewarden.policy.severity: low
-    io.kubewarden.policy.description: >-
-      Metadata must set recommanded Kubernetes labels
-      See: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
+  name: portefaix-M0003
+  metadata:
+    annotations:
+      io.kubewarden.policy.title: Metadata should have portefaix.xyz labels
+      io.kubewarden.policy.category: Resource validation
+      io.kubewarden.policy.severity: low
+      io.kubewarden.policy.description: >-
+        Metadata should have Portefaix labels:
+        Labels are:
+          - portefaix.xyz/version
 spec:
   module: registry://ghcr.io/kubewarden/policies/safe-labels:v0.1.14
   rules:
