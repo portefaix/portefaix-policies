@@ -11,7 +11,7 @@ Policies for Portefaix project using :
 * [Kyverno](https://kyverno.io/)
 * [Kubewarden](https://www.kubewarden.io/)
 
-| Policy | Kyverno | OPA | Kubewarden | Validating admission policies |
+| Policy | Kyverno | OPA | Kubewarden | Kubernetes (CEL) |
 |--------|:-------:|:---:|:----------:|:-----------------------------:|
 | `portefaix-C0001 - Container must not use latest image tag` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
 | `portefaix-C0002 - Container must set liveness probe` | :white_check_mark: | :white_check_mark: | :x: | :white_check_mark: |
