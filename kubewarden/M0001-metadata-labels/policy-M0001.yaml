@@ -15,12 +15,12 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-apiVersion: policies.kubewarden.io/v1alpha2
+apiVersion: policies.kubewarden.io/v1
 kind: ClusterAdmissionPolicy
 metadata:
   name: portefaix-M0001
 spec:
-  module: registry://ghcr.io/kubewarden/policies/safe-labels:v0.1.7
+  module: registry://ghcr.io/kubewarden/policies/safe-labels:v0.1.14
   rules:
     - apiGroups: [""]
       apiVersions: ["v1"]
