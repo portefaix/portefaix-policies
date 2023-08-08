@@ -42,4 +42,4 @@ spec:
   validations:
   - expression: >
       'portefaix.xyz/version' in object.metadata.labels
-    message: "Kubernetes recommanded labels is required."
+    message: "Portefaix recommanded labels is required."
