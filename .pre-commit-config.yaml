@@ -36,6 +36,12 @@ repos:
         - --license-filepath
         - LICENSE
         # - --remove-header
+# TODO: https://github.com/dprint/dprint/issues/442
+- repo: https://github.com/spinergie/pre-commit-dprint
+  rev: v0.42.5
+  hooks:
+  - id: dprint
+    pass_filenames: false
 - repo: https://github.com/anderseknert/pre-commit-opa
   rev: v1.5.0
   hooks:
