@@ -18,15 +18,15 @@
 apiVersion: admissionregistration.k8s.io/v1alpha1
 kind: ValidatingAdmissionPolicy
 metadata:
-  name: portefaix-M0001
+  name: m0001.metadata.portefaix.xyz
 spec:
   failurePolicy: Fail
   matchConstraints:
     resourceRules:
-    - apiGroups:   [""]
-      apiVersions: ["v1"]
-      operations:  ["CREATE", "UPDATE"]
-      resources:   ["namespaces"]
+    # - apiGroups:   [""]
+    #   apiVersions: ["v1"]
+    #   operations:  ["CREATE", "UPDATE"]
+    #   resources:   ["namespaces"]
     - apiGroups:   [""]
       apiVersions: ["v1"]
       operations:  ["CREATE", "UPDATE"]
