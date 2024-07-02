@@ -42,7 +42,7 @@ spec:
       message: "Readiness probe is required"
     - expression: "object.kind != 'CronJob' || object.spec.jobTemplate.spec.template.spec.containers.all(container, has(container.readinessProbe))"
       message: "Readiness probe is required"
-    auditAnnotations:
+  auditAnnotations:
   - key: "container-readiness-probe"
     valueExpression: "Readiness probe is required"
 ---
