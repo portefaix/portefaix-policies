@@ -18,7 +18,7 @@
 apiVersion: admissionregistration.k8s.io/v1alpha1
 kind: ValidatingAdmissionPolicy
 metadata:
-  name: portefaix-C0008
+  name: c0008.metadata.portefaix.xyz
 spec:
   failurePolicy: Fail
   matchConstraints:
