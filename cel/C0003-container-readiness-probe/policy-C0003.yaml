@@ -42,3 +42,14 @@ spec:
       message: "Readiness probe is required"
     - expression: "object.kind != 'CronJob' || object.spec.jobTemplate.spec.template.spec.containers.all(container, has(container.readinessProbe))"
       message: "Readiness probe is required"
+    auditAnnotations:
+  - key: "container-readiness-probe"
+    valueExpression: "Readiness probe is required"
+---
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: c0003.container.portefaix.xyz
+spec:
+  policyName: c0003.container.portefaix.xyz
+  validationActions: [Warn, Audit]

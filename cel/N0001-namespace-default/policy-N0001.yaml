@@ -37,4 +37,15 @@ spec:
       resources:   ["jobs","cronjobs"]
   validations:
     - expression: "['Pod','Deployment','ReplicaSet','DaemonSet','StatefulSet','Job', 'CronJob'].all(kind, object.kind != kind) || (has(object.metadata.namespace) && object.metadata.namespace != 'default')"
-      message: "Workloads in default namespace are not allowed"
+      message: "Resources in default namespace are not allowed"
+  auditAnnotations:
+  - key: "default-namespace-not-allowed"
+    valueExpression: "Resources in default namespace are not allowed"
+---
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: n0001.container.portefaix.xyz
+spec:
+  policyName: n0001.container.portefaix.xyz
+  validationActions: [Warn, Audit]
