@@ -1,0 +1,46 @@
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+---
+apiVersion: policies.kubewarden.io/v1
+kind: ClusterAdmissionPolicy
+metadata:
+  name: portefaix-M0003
+  metadata:
+    annotations:
+      io.kubewarden.policy.title: Authorized registry
+      io.kubewarden.policy.category: Resource validation
+      io.kubewarden.policy.severity: medium
+      io.kubewarden.policy.description: >-
+        This policy allows you to restrict which registry in your cluster
+        can refer to
+spec:
+  module: registry://ghcr.io/kubewarden/policies/trusted-repos:v0.2.0
+  rules:
+  - apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+    operations:
+    - CREATE
+    - UPDATE
+  mutating: false
+  settings:
+    registries:
+      allow:
+      - docker.io
+      - ghcr.io
+      reject:
+      - quay.io

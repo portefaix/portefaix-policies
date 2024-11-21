@@ -21,6 +21,7 @@ Policies for Portefaix project using :
 | `portefaix-M0002 - Metadata should have a8r.io annotations`          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `portefaix-M0003 - Metadata should have portefaix.xyz labels`        | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `portefaix-N0001 - Disallow Default Namespace`                       | :white_check_mark: |        :x:         |        :x:         | :white_check_mark: |
+| `portefaix-P0001 - Authorized registries`                            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 ## Documentation
 
