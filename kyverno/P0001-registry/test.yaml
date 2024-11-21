@@ -14,33 +14,19 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-package pod_run_as_nonroot
-
-test_runasnonroot_true {
-	pod := {
-		"kind": "Pod",
-		"metadata": {"name": "test-pod"},
-		"spec": {"securityContext": {"runAsNonRoot": true}},
-	}
-
-	pod_run_as_non_root(pod)
-}
-
-test_runasnonroot_null {
-	pod := {
-		"kind": "Pod",
-		"metadata": {"name": "test-pod"},
-	}
-
-	not pod_run_as_non_root(pod)
-}
-
-test_runasnonroot_false {
-	pod := {
-		"kind": "Pod",
-		"metadata": {"name": "test-pod"},
-		"spec": {"securityContext": {"runAsNonRoot": false}},
-	}
-
-	not pod_run_as_non_root(pod)
-}
+name: test-portefaix-P0001
+policies:
+  -  policy-P0001.yaml
+resources:
+  -  resource.yaml
+results:
+  - policy: portefaix-P0001
+    rule: validate-authorized-registry
+    resource: myapp-pod-ok
+    kind: Pod
+    status: pass
+  - policy: portefaix-P0001
+    rule: validate-authorized-registry
+    resource: myapp-pod-ko
+    kind: Pod
+    status: fail

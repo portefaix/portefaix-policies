@@ -14,25 +14,37 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-package pod_host_alias
-
-test_input_with_alias_missing {
-	pod := {
-		"kind": "Pod",
-		"spec": {},
-	}
-
-	not pod_host_alias(pod)
-}
-
-test_input_with_alias {
-	pod := {
-		"kind": "Pod",
-		"spec": {"hostAliases": [{
-			"ip": "127.0.0.1",
-			"hostnames": ["foo.local"],
-		}]},
-	}
-
-	pod_host_alias(pod)
-}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-ok
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: goproxy
+    image: ghcr.io/goproxy:0.1
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      tcpSocket:
+        port: 8080
+      periodSeconds: 10
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-ko
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: goproxy
+    image: quay.io/goproxy:0.1
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      tcpSocket:
+        port: 8080
+      periodSeconds: 10
