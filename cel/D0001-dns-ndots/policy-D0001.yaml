@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingAdmissionPolicy
+metadata:
+  name: d0001.dns.portefaix.xyz
+spec:
+  failurePolicy: Fail
+  reinvocationPolicy: IfNeeded
+  matchConstraints:
+    resourceRules:
+    - operations: ["CREATE", "UPDATE"]
+      apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      resources: ["deployments", "statefulsets", "daemonsets"]
+  mutations:
+  - patchType: "JSONPatch"
+    condition: "!has(object.spec.template.spec.dnsConfig)"
+    jsonPatch:
+      expression: |
+        [
+          {
+            "op": "add",
+            "path": "/spec/template/spec/dnsConfig",
+            "value": {
+              "options": [
+                {
+                  "name": "ndots",
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        ]
+  - patchType: "JSONPatch"
+    condition: "has(object.spec.template.spec.dnsConfig) && !has(object.spec.template.spec.dnsConfig.options)"
+    jsonPatch:
+      expression: |
+        [
+          {
+            "op": "add",
+            "path": "/spec/template/spec/dnsConfig/options",
+            "value": [
+              {
+                "name": "ndots",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+  - patchType: "JSONPatch"
+    condition: "has(object.spec.template.spec.dnsConfig) && has(object.spec.template.spec.dnsConfig.options) && !object.spec.template.spec.dnsConfig.options.exists(opt, opt.name == 'ndots')"
+    jsonPatch:
+      expression: |
+        [
+          {
+            "op": "add",
+            "path": "/spec/template/spec/dnsConfig/options/-",
+            "value": {
+              "name": "ndots",
+              "value": "1"
+            }
+          }
+        ]
+---
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingAdmissionPolicyBinding
+metadata:
+  name: d0001.dns.portefaix.xyz
+spec:
+  policyName: d0001.dns.portefaix.xyz
