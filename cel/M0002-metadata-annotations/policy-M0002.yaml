@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-apiVersion: admissionregistration.k8s.io/v1alpha1
+apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingAdmissionPolicy
 metadata:
   name: m0002.metadata.portefaix.xyz
@@ -39,7 +39,7 @@ spec:
   - key: "metadata-a8r-io-recommended-annotations"
     valueExpression: "a8r.io annotations is required"
 ---
-apiVersion: admissionregistration.k8s.io/v1alpha1
+apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingAdmissionPolicyBinding
 metadata:
   name: m0002.container.portefaix.xyz

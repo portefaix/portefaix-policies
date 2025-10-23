@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-apiVersion: admissionregistration.k8s.io/v1alpha1
+apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingAdmissionPolicy
 metadata:
   name: c0003.container.portefaix.xyz
@@ -33,7 +33,7 @@ spec:
   - key: "container-readiness-probe"
     valueExpression: "Readiness probe is required"
 ---
-apiVersion: admissionregistration.k8s.io/v1alpha1
+apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingAdmissionPolicyBinding
 metadata:
   name: c0003.container.portefaix.xyz
