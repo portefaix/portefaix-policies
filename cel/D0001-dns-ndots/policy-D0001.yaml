@@ -28,7 +28,7 @@ spec:
               "options": [
                 {
                   "name": "ndots",
-                  "value": "1"
+                  "value": "2"
                 }
               ]
             }
@@ -45,7 +45,7 @@ spec:
             "value": [
               {
                 "name": "ndots",
-                "value": "1"
+                "value": "2"
               }
             ]
           }
