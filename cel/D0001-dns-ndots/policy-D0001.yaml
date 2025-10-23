@@ -1,0 +1,62 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: MutatingAdmissionPolicy
+metadata:
+  name: d0001.dns.portefaix.xyz
+spec:
+  failurePolicy: Fail
+  reinvocationPolicy: IfNeeded
+  matchConstraints:
+    resourceRules:
+    - operations: ["CREATE", "UPDATE"]
+      apiGroups: ["apps"]
+      apiVersions: ["v1"]
+      resources: ["deployments", "statefulsets", "daemonsets"]
+  mutations:
+  - patchType: "RFC6902"
+    applyConfiguration:
+      expression: |
+        object.spec.template.spec.dnsConfig == null ? 
+          Object.spec{
+            template: Object.template{
+              spec: Object.spec{
+                dnsConfig: Object.dnsConfig{
+                  options: [
+                    Object.dnsConfigOption{
+                      name: "ndots",
+                      value: "1"
+                    }
+                  ]
+                }
+              }
+            }
+          } : 
+          Object.spec{
+            template: Object.template{
+              spec: Object.spec{
+                dnsConfig: Object.dnsConfig{
+                  options: (
+                    has(object.spec.template.spec.dnsConfig.options) && 
+                    object.spec.template.spec.dnsConfig.options.exists(opt, opt.name == "ndots")
+                  ) ? 
+                    object.spec.template.spec.dnsConfig.options :
+                    object.spec.template.spec.dnsConfig.options + [
+                      Object.dnsConfigOption{
+                        name: "ndots",
+                        value: "1"
+                      }
+                    ]
+                }
+              }
+            }
+          }
+---
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: MutatingAdmissionPolicyBinding
+metadata:
+  name: d0001.dns.portefaix.xyz
+spec:
+  policyName: d0001.dns.portefaix.xyz
