@@ -1,161 +1,17 @@
 {
   extends: [
-    'config:recommended',
-    ':gitSignOff',
+    "config:recommended",
+    ":gitSignOff",
+    "github>portefaix/.github//.github/renovate/autoMerge.json5",
+    "github>portefaix/.github//.github/renovate/commitMessage.json5",
+    "github>portefaix/.github//.github/renovate/labels.json5",
   ],
   enabled: true,
-  timezone: 'Europe/Paris',
+  timezone: "Europe/Paris",
   dependencyDashboard: true,
-  dependencyDashboardTitle: 'Renovate Dashboard',
-  suppressNotifications: [
-    'prIgnoreNotification',
-  ],
-  rebaseWhen: 'conflicted',
-  assignees: [
-    '@nlamirault',
-  ],
+  dependencyDashboardTitle: "Renovate Dashboard",
+  suppressNotifications: ["prIgnoreNotification"],
+  rebaseWhen: "conflicted",
+  assignees: ["@nlamirault"],
   reviewersFromCodeOwners: true,
-  packageRules: [
-    {
-      matchDatasources: [
-        'terraform',
-        'terraform-provider',
-        'terraform-module',
-      ],
-      matchUpdateTypes: [
-        'major',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/high',
-        'size/xs',
-      ],
-    },
-    {
-      matchDatasources: [
-        'terraform',
-        'terraform-provider',
-        'terraform-module',
-      ],
-      matchUpdateTypes: [
-        'minor',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/medium',
-        'size/xs',
-      ],
-    },
-    {
-      matchDatasources: [
-        'terraform',
-        'terraform-provider',
-        'terraform-module',
-      ],
-      matchUpdateTypes: [
-        'patch',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/low',
-        'size/xs',
-      ],
-    },
-    {
-      matchPackageNames: [
-        'terraform-version',
-      ],
-      matchUpdateTypes: [
-        'major',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/high',
-        'size/xs',
-      ],
-    },
-    {
-      matchPackageNames: [
-        'terraform-version',
-      ],
-      matchUpdateTypes: [
-        'minor',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/medium',
-        'size/xs',
-      ],
-    },
-    {
-      matchPackageNames: [
-        'terraform-version',
-      ],
-      matchUpdateTypes: [
-        'patch',
-      ],
-      labels: [
-        'area/renovate',
-        'dependency/terraform',
-        'priority/low',
-        'size/xs',
-      ],
-    },
-    {
-      matchDatasources: [
-        'action',
-      ],
-      matchUpdateTypes: [
-        'major',
-      ],
-      labels: [
-        'kind/renovate',
-        'lifecycle/active',
-        'status/review_needed',
-        'area/github',
-        'dependency/github',
-        'priority/high',
-        'size/xs',
-      ],
-    },
-    {
-      matchDatasources: [
-        'action',
-      ],
-      matchUpdateTypes: [
-        'minor',
-      ],
-      labels: [
-        'kind/renovate',
-        'lifecycle/active',
-        'status/review_needed',
-        'area/github',
-        'dependency/github',
-        'priority/medium',
-        'size/xs',
-      ],
-    },
-    {
-      matchDatasources: [
-        'action',
-      ],
-      matchUpdateTypes: [
-        'patch',
-      ],
-      labels: [
-        'kind/renovate',
-        'lifecycle/active',
-        'status/review_needed',
-        'area/github',
-        'dependency/github',
-        'priority/low',
-        'size/xs',
-      ],
-    },
-  ],
 }
