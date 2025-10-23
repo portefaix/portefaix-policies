@@ -1,17 +1,4 @@
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 
 # See https://pre-commit.com for more information
@@ -27,21 +14,39 @@ repos:
         - '--allow-multiple-documents'
         exclude: mkdocs.yml
     -   id: check-added-large-files
--   repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.1
-    hooks:
-    -   id: insert-license
-        files:  (Makefile|\.mk|\.yaml|\.yml|\.rego|\.toml|\.sh)
-        args:
-        - --license-filepath
-        - LICENSE
-        # - --remove-header
-# TODO: https://github.com/dprint/dprint/issues/442
-- repo: https://github.com/spinergie/pre-commit-dprint
-  rev: v0.42.5
+- repo: local
+  hooks:
+  - id: hawkeye
+    name: "📄 Hawkeye / Insert license header"
+    entry: bash -c 'hawkeye format'
+    language: system
+    pass_filenames: true
+    files: \.*$
+    args: []
+- repo: local
   hooks:
   - id: dprint
-    pass_filenames: false
+    name: "📝 Dprint / Formatting"
+    entry: bash -c 'dprint fmt'
+    language: system
+    pass_filenames: true
+    files: \.*$
+    args: []
+# -   repo: https://github.com/Lucas-C/pre-commit-hooks
+#     rev: v1.3.1
+#     hooks:
+#     -   id: insert-license
+#         files:  (Makefile|\.mk|\.yaml|\.yml|\.rego|\.toml|\.sh)
+#         args:
+#         - --license-filepath
+#         - LICENSE
+#         - --remove-header
+# TODO: https://github.com/dprint/dprint/issues/442
+# - repo: https://github.com/spinergie/pre-commit-dprint
+#   rev: v0.42.5
+#   hooks:
+#   - id: dprint
+#     pass_filenames: false
 - repo: https://github.com/anderseknert/pre-commit-opa
   rev: v1.5.0
   hooks:

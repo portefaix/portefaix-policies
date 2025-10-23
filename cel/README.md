@@ -12,5 +12,6 @@
 | [c0002.container.portefaix.xyz - Container must set liveness probe](C0003-container-liveness-probe)           |
 | [c0003.container.portefaix.xyz - Container must set readiness probe](C0002-container-readiness-probe)         |
 | [c0008.container.portefaix.xyz - Container resource constraints must be specified](C0008-container-resources) |
+| [d0001.dns.portefaix.xyz - DNS ndots configuration must be set to 1](D0001-dns-ndots)                          |
 
 <!-- END_POLICIES_DOC -->
